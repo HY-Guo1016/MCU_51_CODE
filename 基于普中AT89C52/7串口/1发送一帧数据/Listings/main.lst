@@ -1,0 +1,54 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              04/30/2023 13:47:31 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN ..\Output\main.obj
+COMPILER INVOKED BY: d:\Keil_v5\C51\BIN\C51.EXE ..\Source\main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(..\Li
+                    -stings\main.lst) OBJECT(..\Output\main.obj)
+
+line level    source
+
+   1          #include <reg51.h>
+   2          #include "delay.h"
+   3          void UartInit(void);
+   4          
+   5          void main()
+   6          {
+   7   1              UartInit();
+   8   1              while(1)
+   9   1              {
+  10   2                      SBUF = 'a';
+  11   2                      while(!TI);
+  12   2                              TI = 0;
+  13   2                      SBUF = 'b';
+  14   2                      while(!TI);
+  15   2                              TI = 0;
+  16   2                      Delayxms(1000);
+  17   2              }
+  18   1      }
+  19          
+  20          void UartInit(void)             //4800bps@11.0592MHz
+  21          {
+  22   1              PCON &= 0x7F;           //波特率不倍速
+  23   1              SCON = 0x50;            //8位数据,可变波特率
+  24   1              TMOD &= 0x0F;           //设置定时器模式
+  25   1              TMOD |= 0x20;           //设置定时器模式
+  26   1              TL1 = 0xFA;             //设置定时初始值
+  27   1              TH1 = 0xFA;             //设置定时重载值
+  28   1              ET1 = 0;                //禁止定时器%d中断
+  29   1              TR1 = 1;                //定时器1开始计时
+  30   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     51    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

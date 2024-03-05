@@ -1,0 +1,108 @@
+C51 COMPILER V9.60.0.0   MATRIXKEY                                                         01/15/2023 23:55:28 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MATRIXKEY
+OBJECT MODULE PLACED IN ..\Output\matrixkey.obj
+COMPILER INVOKED BY: d:\Keil_v5\C51\BIN\C51.EXE ..\Source\matrixkey.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(
+                    -..\Listing\matrixkey.lst) OBJECT(..\Output\matrixkey.obj)
+
+line level    source
+
+   1          #include "matrixkey.h"
+   2          
+   3          unsigned char key_scan()
+   4          {
+   5   1              static unsigned char KeyNum = 0;
+   6   1              //第一行扫描
+   7   1              keyin1 = 1;     keyin2 = 1;     keyin3 = 1;     keyin4 = 1;
+   8   1              keyout1 = 0;    keyout2 = 1;    keyout3 = 1;    keyout4 = 1;
+   9   1              if(!keyin1||!keyin2||!keyin3||!keyin4)
+  10   1              {
+  11   2                      Delayxms(20);//按键消抖
+  12   2                      if(!keyin1||!keyin2||!keyin3||!keyin4)
+  13   2                      {
+  14   3                              if(!keyin1)
+  15   3                                      KeyNum = 1;
+  16   3                              if(!keyin2)
+  17   3                                      KeyNum = 2;
+  18   3                              if(!keyin3)
+  19   3                                      KeyNum = 3;
+  20   3                              if(!keyin4)
+  21   3                                      KeyNum = 4;
+  22   3                      }while(!keyin1||!keyin2||!keyin3||!keyin4);//松手等待
+  23   2              }
+  24   1                      
+  25   1              //第二行扫描
+  26   1              keyin1 = 1;     keyin2 = 1;     keyin3 = 1;     keyin4 = 1;
+  27   1              keyout1 = 1;    keyout2 = 0;    keyout3 = 1;    keyout4 = 1;
+  28   1              if(!keyin1||!keyin2||!keyin3||!keyin4)
+  29   1              {
+  30   2                      Delayxms(20);//按键消抖
+  31   2                      if(!keyin1||!keyin2||!keyin3||!keyin4)
+  32   2                      {
+  33   3                              if(!keyin1)
+  34   3                                      KeyNum = 5;
+  35   3                              if(!keyin2)
+  36   3                                      KeyNum = 6;
+  37   3                              if(!keyin3)
+  38   3                                      KeyNum = 7;
+  39   3                              if(!keyin4)
+  40   3                                      KeyNum = 8;
+  41   3                      }while(!keyin1||!keyin2||!keyin3||!keyin4);//松手等待
+  42   2              }
+  43   1              //第三行扫描
+  44   1              keyin1 = 1;     keyin2 = 1;     keyin3 = 1;     keyin4 = 1;
+  45   1              keyout1 = 1;    keyout2 = 1;    keyout3 = 0;    keyout4 = 1;
+  46   1              if(!keyin1||!keyin2||!keyin3||!keyin4)
+  47   1              {
+  48   2                      Delayxms(20);//按键消抖
+  49   2                      if(!keyin1||!keyin2||!keyin3||!keyin4)
+  50   2                      {
+  51   3                              if(!keyin1)
+  52   3                                      KeyNum = 9;
+  53   3                              if(!keyin2)
+  54   3                                      KeyNum = 10;
+C51 COMPILER V9.60.0.0   MATRIXKEY                                                         01/15/2023 23:55:28 PAGE 2   
+
+  55   3                              if(!keyin3)
+  56   3                                      KeyNum = 11;
+  57   3                              if(!keyin4)
+  58   3                                      KeyNum = 12;
+  59   3                      }while(!keyin1||!keyin2||!keyin3||!keyin4);//松手等待
+  60   2              }
+  61   1                              
+  62   1              //第四行扫描
+  63   1              keyin1 = 1;     keyin2 = 1;     keyin3 = 1;     keyin4 = 1;
+  64   1              keyout1 = 1;    keyout2 = 1;    keyout3 = 1;    keyout4 = 0;
+  65   1              if(!keyin1||!keyin2||!keyin3||!keyin4)
+  66   1              {
+  67   2                      Delayxms(20);//按键消抖
+  68   2                      if(!keyin1||!keyin2||!keyin3||!keyin4)
+  69   2                      {
+  70   3                              if(!keyin1)
+  71   3                                      KeyNum = 13;
+  72   3                              if(!keyin2)
+  73   3                                      KeyNum = 14;
+  74   3                              if(!keyin3)
+  75   3                                      KeyNum = 15;
+  76   3                              if(!keyin4)
+  77   3                                      KeyNum = 16;
+  78   3      
+  79   3                      }while(!keyin1||!keyin2||!keyin3||!keyin4);//松手等待
+  80   2              }
+  81   1              return KeyNum;
+  82   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    335    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      1    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,4 @@
+"..\Output\main.obj",
+"..\Output\display.obj" 
+TO "..\Output\单总线概述" 
+PRINT("..\Listings\单总线概述.m51") RAMSIZE(256) 

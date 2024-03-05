@@ -1,0 +1,6 @@
+"..\Output\main.obj",
+"..\Output\matrixkey.obj",
+"..\Output\display.obj",
+"..\Output\delay.obj" 
+TO "..\Output\线反转法" 
+PRINT("..\Listing\线反转法.m51") RAMSIZE(256) 

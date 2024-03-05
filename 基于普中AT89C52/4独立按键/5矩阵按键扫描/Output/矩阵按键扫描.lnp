@@ -1,0 +1,6 @@
+"..\Output\main.obj",
+"..\Output\display.obj",
+"..\Output\delay.obj",
+"..\Output\matrixkey.obj" 
+TO "..\Output\¾ØÕó°´¼üÉ¨Ãè" 
+PRINT("..\Listing\¾ØÕó°´¼üÉ¨Ãè.m51") RAMSIZE(256) 

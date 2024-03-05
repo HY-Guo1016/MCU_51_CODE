@@ -1,0 +1,107 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    01/02/2023  20:18:35  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+D:\KEIL_V5\C51\BIN\BL51.EXE ..\Output\main.obj, ..\Output\delay.obj TO ..\Output\Êý×éÁ÷Ë®µÆ PRINT (..\Listings\Êý×éÁ÷Ë®µ
+>> Æ.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  ..\Output\main.obj (MAIN)
+  ..\Output\delay.obj (DELAY)
+  D:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  ..\Output\Êý×éÁ÷Ë®µÆ (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0001H     UNIT         _DATA_GROUP_
+            IDATA   0009H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     001FH     UNIT         ?PR?MAIN?MAIN
+            CODE    0022H     0016H     UNIT         ?PR?_DELAYXMS?DELAY
+            CODE    0038H     000CH     UNIT         ?C_C51STARTUP
+            CODE    0044H     0008H     UNIT         ?CO?MAIN
+
+
+
+OVERLAY MAP OF MODULE:   ..\Output\Êý×éÁ÷Ë®µÆ (MAIN)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?MAIN
+
+?PR?MAIN?MAIN                  0008H    0001H
+  +--> ?CO?MAIN
+  +--> ?PR?_DELAYXMS?DELAY
+
+
+
+SYMBOL TABLE OF MODULE:  ..\Output\Êý×éÁ÷Ë®µÆ (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00A0H         PUBLIC        P2
+  C:0003H         PUBLIC        main
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  01/02/2023  20:18:35  PAGE 2
+
+
+  C:0044H         PUBLIC        LEDBUF
+  -------         PROC          MAIN
+  -------         DO            
+  D:0008H         SYMBOL        m
+  -------         ENDDO         
+  C:0003H         LINE#         6
+  C:0003H         LINE#         7
+  C:0003H         LINE#         8
+  C:0003H         LINE#         9
+  C:0003H         LINE#         11
+  C:0011H         LINE#         12
+  C:0011H         LINE#         13
+  C:0019H         LINE#         14
+  C:001EH         LINE#         15
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        DELAY
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:0022H         PUBLIC        _Delayxms
+  -------         PROC          _DELAYXMS
+  D:0006H         SYMBOL        xms
+  -------         DO            
+  D:0006H         SYMBOL        i
+  D:0005H         SYMBOL        j
+  D:0007H         SYMBOL        k
+  -------         ENDDO         
+  C:0022H         LINE#         5
+  C:0022H         LINE#         6
+  C:0022H         LINE#         8
+  C:002CH         LINE#         9
+  C:002CH         LINE#         10
+  C:002EH         LINE#         11
+  C:0030H         LINE#         13
+  C:0030H         LINE#         14
+  C:0032H         LINE#         15
+  C:0034H         LINE#         16
+  C:0037H         LINE#         17
+  -------         ENDPROC       _DELAYXMS
+  -------         ENDMOD        DELAY
+
+Program Size: data=10.0 xdata=0 code=76
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

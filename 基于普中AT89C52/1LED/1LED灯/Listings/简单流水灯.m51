@@ -1,0 +1,106 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    01/01/2023  20:30:53  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+D:\KEIL_V5\C51\BIN\BL51.EXE ..\Output\main.obj TO ..\Output\简单流水灯 PRINT (..\Listings\简单流水灯.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  ..\Output\main.obj (MAIN)
+  D:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  ..\Output\简单流水灯 (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0042H     UNIT         ?PR?MAIN?MAIN
+            CODE    0045H     0016H     UNIT         ?PR?_DELAYXMS?MAIN
+            CODE    005BH     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   ..\Output\简单流水灯 (MAIN)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?MAIN
+
+?PR?MAIN?MAIN
+  +--> ?PR?_DELAYXMS?MAIN
+
+
+
+SYMBOL TABLE OF MODULE:  ..\Output\简单流水灯 (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00A0H         PUBLIC        P2
+  C:0003H         PUBLIC        main
+  C:0045H         PUBLIC        _DelayXms
+  -------         PROC          MAIN
+  C:0003H         LINE#         4
+  C:0003H         LINE#         5
+  C:0003H         LINE#         6
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  01/01/2023  20:30:53  PAGE 2
+
+
+  C:0003H         LINE#         7
+  C:0003H         LINE#         8
+  C:0006H         LINE#         9
+  C:000BH         LINE#         10
+  C:000EH         LINE#         11
+  C:0013H         LINE#         12
+  C:0016H         LINE#         13
+  C:001BH         LINE#         14
+  C:001EH         LINE#         15
+  C:0023H         LINE#         16
+  C:0026H         LINE#         17
+  C:002BH         LINE#         18
+  C:002EH         LINE#         19
+  C:0033H         LINE#         20
+  C:0036H         LINE#         21
+  C:003BH         LINE#         22
+  C:003EH         LINE#         23
+  C:0043H         LINE#         24
+  -------         ENDPROC       MAIN
+  -------         PROC          _DELAYXMS
+  D:0007H         SYMBOL        X
+  -------         DO            
+  D:0006H         SYMBOL        i
+  D:0005H         SYMBOL        j
+  D:0007H         SYMBOL        k
+  -------         ENDDO         
+  C:0045H         LINE#         28
+  C:0045H         LINE#         29
+  C:0045H         LINE#         32
+  C:004FH         LINE#         33
+  C:004FH         LINE#         34
+  C:0051H         LINE#         35
+  C:0053H         LINE#         37
+  C:0053H         LINE#         38
+  C:0055H         LINE#         39
+  C:0057H         LINE#         40
+  C:005AH         LINE#         41
+  -------         ENDPROC       _DELAYXMS
+  -------         ENDMOD        MAIN
+
+Program Size: data=9.0 xdata=0 code=103
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

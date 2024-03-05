@@ -1,0 +1,228 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    01/16/2023  00:36:23  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+D:\KEIL_V5\C51\BIN\BL51.EXE ..\Output\main.obj, ..\Output\matrixkey.obj, ..\Output\display.obj, ..\Output\delay.obj TO .
+>> .\Output\线反转法 PRINT (..\Listing\线反转法.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  ..\Output\main.obj (MAIN)
+  ..\Output\matrixkey.obj (MATRIXKEY)
+  ..\Output\display.obj (DISPLAY)
+  ..\Output\delay.obj (DELAY)
+  D:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+  D:\KEIL_V5\C51\LIB\C51S.LIB (?C?CCASE)
+  D:\KEIL_V5\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  ..\Output\线反转法 (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0008H     UNIT         ?DT?DISPLAY
+            DATA    0010H     0003H     UNIT         ?DT?MATRIXKEY
+            DATA    0013H     0001H     UNIT         _DATA_GROUP_
+            IDATA   0014H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     00C7H     UNIT         ?PR?KEY_SCAN?MATRIXKEY
+            CODE    00CAH     00B4H     UNIT         ?PR?MAIN?MAIN
+            CODE    017EH     008CH     UNIT         ?C_C51STARTUP
+            CODE    020AH     0031H     UNIT         ?PR?DISPLAY?DISPLAY
+            CODE    023BH     0026H     UNIT         ?C?LIB_CODE
+            CODE    0261H     0021H     UNIT         ?CO?DISPLAY
+            CODE    0282H     0014H     UNIT         ?PR?_DELAYXMS?DELAY
+            CODE    0296H     000EH     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   ..\Output\线反转法 (MAIN)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?MAIN
+  +--> ?C_INITSEG
+
+?PR?MAIN?MAIN                  -----    -----
+  +--> ?PR?KEY_SCAN?MATRIXKEY
+  +--> ?PR?DISPLAY?DISPLAY
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  01/16/2023  00:36:23  PAGE 2
+
+
+?PR?KEY_SCAN?MATRIXKEY         -----    -----
+  +--> ?PR?_DELAYXMS?DELAY
+
+?PR?DISPLAY?DISPLAY            0013H    0001H
+  +--> ?CO?DISPLAY
+  +--> ?PR?_DELAYXMS?DELAY
+
+
+
+SYMBOL TABLE OF MODULE:  ..\Output\线反转法 (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:00CAH         PUBLIC        main
+  -------         PROC          MAIN
+  C:00CAH         LINE#         6
+  C:00CAH         LINE#         7
+  C:00CAH         LINE#         9
+  C:00CDH         LINE#         10
+  C:00D0H         LINE#         11
+  C:00D3H         LINE#         12
+  C:00D6H         LINE#         13
+  C:00D9H         LINE#         14
+  C:00DCH         LINE#         15
+  C:00DFH         LINE#         17
+  C:00DFH         LINE#         18
+  C:00DFH         LINE#         19
+  C:012AH         LINE#         20
+  C:012AH         LINE#         21
+  C:012FH         LINE#         22
+  C:0134H         LINE#         23
+  C:0139H         LINE#         24
+  C:013EH         LINE#         25
+  C:0143H         LINE#         26
+  C:0148H         LINE#         27
+  C:014DH         LINE#         28
+  C:0152H         LINE#         29
+  C:0157H         LINE#         30
+  C:015CH         LINE#         31
+  C:0161H         LINE#         32
+  C:0166H         LINE#         33
+  C:016BH         LINE#         34
+  C:0170H         LINE#         35
+  C:0175H         LINE#         36
+  C:0178H         LINE#         37
+  C:0178H         LINE#         38
+  C:0178H         LINE#         40
+  C:017BH         LINE#         42
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        MATRIXKEY
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  01/16/2023  00:36:23  PAGE 3
+
+
+  C:0003H         PUBLIC        key_scan
+  -------         PROC          KEY_SCAN
+  -------         DO            
+  D:0010H         SYMBOL        temp
+  D:0011H         SYMBOL        temp2
+  D:0012H         SYMBOL        KeyNum
+  -------         ENDDO         
+  C:0003H         LINE#         3
+  C:0003H         LINE#         4
+  C:0003H         LINE#         8
+  C:0006H         LINE#         9
+  C:0009H         LINE#         10
+  C:000FH         LINE#         11
+  C:000FH         LINE#         12
+  C:0016H         LINE#         13
+  C:001CH         LINE#         14
+  C:001CH         LINE#         15
+  C:0028H         LINE#         16
+  C:002BH         LINE#         17
+  C:0037H         LINE#         18
+  C:0037H         LINE#         19
+  C:003EH         LINE#         21
+  C:0079H         LINE#         22
+  C:0079H         LINE#         23
+  C:007EH         LINE#         24
+  C:0083H         LINE#         25
+  C:0088H         LINE#         26
+  C:008DH         LINE#         28
+  C:0092H         LINE#         29
+  C:0097H         LINE#         30
+  C:009CH         LINE#         31
+  C:00A1H         LINE#         33
+  C:00A6H         LINE#         34
+  C:00ABH         LINE#         35
+  C:00B0H         LINE#         36
+  C:00B5H         LINE#         38
+  C:00BAH         LINE#         39
+  C:00BFH         LINE#         40
+  C:00C4H         LINE#         41
+  C:00C7H         LINE#         42
+  C:00C7H         LINE#         43
+  C:00C7H         LINE#         44
+  C:00C9H         LINE#         45
+  -------         ENDPROC       KEY_SCAN
+  -------         ENDMOD        MATRIXKEY
+
+  -------         MODULE        DISPLAY
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:00A0H         PUBLIC        P2
+  C:027AH         PUBLIC        HC138
+  D:0008H         PUBLIC        LEDBUF
+  C:0261H         PUBLIC        leddata
+  C:020AH         PUBLIC        display
+  -------         PROC          DISPLAY
+  -------         DO            
+  D:0013H         SYMBOL        i
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  01/16/2023  00:36:23  PAGE 4
+
+
+  -------         ENDDO         
+  C:020AH         LINE#         40
+  C:020AH         LINE#         41
+  C:020AH         LINE#         44
+  C:0218H         LINE#         45
+  C:0218H         LINE#         47
+  C:0224H         LINE#         49
+  C:022CH         LINE#         51
+  C:0233H         LINE#         53
+  C:0236H         LINE#         56
+  C:023AH         LINE#         58
+  -------         ENDPROC       DISPLAY
+  -------         ENDMOD        DISPLAY
+
+  -------         MODULE        DELAY
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:0282H         PUBLIC        _Delayxms
+  -------         PROC          _DELAYXMS
+  D:0006H         SYMBOL        xms
+  -------         DO            
+  D:0005H         SYMBOL        i
+  D:0004H         SYMBOL        j
+  -------         ENDDO         
+  C:0282H         LINE#         5
+  C:0282H         LINE#         6
+  C:0282H         LINE#         8
+  C:0286H         LINE#         9
+  C:0286H         LINE#         10
+  C:0288H         LINE#         11
+  C:028AH         LINE#         13
+  C:028AH         LINE#         14
+  C:028CH         LINE#         15
+  C:028EH         LINE#         16
+  C:0293H         LINE#         19
+  C:0295H         LINE#         21
+  -------         ENDPROC       _DELAYXMS
+  -------         ENDMOD        DELAY
+
+  -------         MODULE        ?C?CCASE
+  C:023BH         PUBLIC        ?C?CCASE
+  -------         ENDMOD        ?C?CCASE
+
+Program Size: data=21.0 xdata=0 code=676
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

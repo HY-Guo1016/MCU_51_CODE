@@ -1,0 +1,101 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              03/19/2023 16:07:59 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN ..\Output\main.obj
+COMPILER INVOKED BY: d:\Keil_v5\C51\BIN\C51.EXE ..\Source\main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(..\Li
+                    -stings\main.lst) OBJECT(..\Output\main.obj)
+
+line level    source
+
+   1          #include <reg51.h>
+   2          #include "PCF8591.h"
+   3          #include "display.h"
+   4          
+   5          void Timer0_Init(void);         //1毫秒@11.0592MHz
+   6          void disp_service();
+   7          unsigned int AD_show=0;
+   8          unsigned char AD_flag=0;
+   9          unsigned char Timer0Cnt=0;
+  10          void main()
+  11          {
+  12   1              unsigned char AD_result=0;
+  13   1              unsigned int ADdat=0;
+  14   1              unsigned int AD_filter=0;
+  15   1              unsigned char AD_cnt=0;
+  16   1              Timer0_Init();
+  17   1              while(1)
+  18   1              {
+  19   2                      if(AD_flag)
+  20   2                      {
+  21   3                              
+  22   3                              AD_flag = 0;
+  23   3                              AD_result = AD_Convert(0x48,3);
+  24   3                              
+  25   3                              ADdat = AD_result*1.0*500/255;
+  26   3                              AD_filter = ADdat+AD_filter;
+  27   3                              AD_cnt++;
+  28   3                              
+  29   3                              if(AD_cnt >= 8)
+  30   3                              {
+  31   4                                      AD_show = AD_filter>>3;
+  32   4                                      AD_filter = 0;
+  33   4                                      AD_cnt = 0;
+  34   4                              }
+  35   3                      }
+  36   2                      disp_service();
+  37   2              }
+  38   1      
+  39   1      }
+  40          
+  41          void Timer0_Init(void)          //1毫秒@11.0592MHz
+  42          {
+  43   1              TMOD &= 0xF0;                   //设置定时器模式
+  44   1              TMOD |= 0x01;                   //设置定时器模式
+  45   1              TL0 = 0x66;                             //设置定时初始值
+  46   1              TH0 = 0xFC;                             //设置定时初始值
+  47   1              TF0 = 0;                                //清除TF0标志
+  48   1              ET0 = 1;
+  49   1              EA = 1;
+  50   1              TR0 = 1;                                //定时器0开始计时
+  51   1      }
+  52          
+  53          void Timer0_ISR() interrupt 1
+  54          {
+C51 COMPILER V9.60.0.0   MAIN                                                              03/19/2023 16:07:59 PAGE 2   
+
+  55   1              TR0 = 0;
+  56   1              
+  57   1              Timer0Cnt++;
+  58   1              if(Timer0Cnt==100)
+  59   1              {       
+  60   2                      Timer0Cnt = 0;
+  61   2                      AD_flag = 1;
+  62   2              }
+  63   1              display();
+  64   1              TL0 = 0x66;                             //设置定时初始值
+  65   1              TH0 = 0xFC;                             //设置定时初始值
+  66   1              TR0 = 1;
+  67   1      }
+  68          
+  69          void disp_service()
+  70          {
+  71   1              LEDBUF[2] = AD_show/100%10;
+  72   1              LEDBUF[1] = AD_show/10%10;
+  73   1              LEDBUF[0] = AD_show%10;
+  74   1      
+  75   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    276    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      4       6
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,57 @@
+C51 COMPILER V9.60.0.0   TIME                                                              04/06/2023 16:26:43 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE TIME
+OBJECT MODULE PLACED IN ..\Output\time.obj
+COMPILER INVOKED BY: d:\Keil_v5\C51\BIN\C51.EXE ..\Source\time.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(..\Li
+                    -stings\time.lst) OBJECT(..\Output\time.obj)
+
+line level    source
+
+   1          #include "time.h"
+   2          
+   3          unsigned char Timer_Start = 0;
+   4          unsigned char Timer_Rec_Cnt = 0;
+   5          void Timer0_Init(void)          //1毫秒@11.0592MHz
+   6          {
+   7   1              TMOD &= 0xF0;                   //设置定时器模式
+   8   1              TL0 = 0x66;                             //设置定时初始值
+   9   1              TH0 = 0xFC;                             //设置定时初始值
+  10   1              TF0 = 0;                                //清除TF0标志
+  11   1              ET0 = 1;
+  12   1              EA = 1;
+  13   1              TR0 = 1;                                //定时器0开始计时
+  14   1      }
+  15          
+  16          void Timer0_ISR() interrupt 1
+  17          {
+  18   1              TR0 = 0;
+  19   1              if(Timer_Start)
+  20   1              {
+  21   2                      Timer_Rec_Cnt++;
+  22   2                      if(Timer_Rec_Cnt>5)
+  23   2                      {
+  24   3                              Rec_Flag = 1;
+  25   3                              Timer_Rec_Cnt = 0;
+  26   3                              Rec_cnt = 0;
+  27   3                              Timer_Start = 0;
+  28   3                      }
+  29   2              }
+  30   1              TL0 = 0x66;                             //设置定时初始值
+  31   1              TH0 = 0xFC;                             //设置定时初始值
+  32   1              TR0 = 1;                                //定时器0开始计时
+  33   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     65    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

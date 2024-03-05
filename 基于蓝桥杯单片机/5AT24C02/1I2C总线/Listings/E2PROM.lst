@@ -1,0 +1,48 @@
+C51 COMPILER V9.60.0.0   E2PROM                                                            03/14/2023 21:22:44 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE E2PROM
+OBJECT MODULE PLACED IN ..\Output\E2PROM.obj
+COMPILER INVOKED BY: d:\Keil_v5\C51\BIN\C51.EXE ..\Source\E2PROM.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(..\
+                    -Listings\E2PROM.lst) OBJECT(..\Output\E2PROM.obj)
+
+line level    source
+
+   1          #include "E2PROM.h"
+   2          
+   3          unsigned char EEPReadByte(unsigned char I2CAddr,unsigned char addr)
+   4          {
+   5   1              unsigned char dat;
+   6   1              I2CStart();
+   7   1              I2CWriteByte(I2CAddr<<1);
+   8   1              I2CWriteByte(addr);
+   9   1              I2CStart();
+  10   1              I2CWriteByte((I2CAddr<<1)|0x01);
+  11   1              dat = I2CReadByte();
+  12   1              SendAck(1);
+  13   1              I2CStop();
+  14   1              return dat;
+  15   1      }
+  16          
+  17          void EEPWriteByte(unsigned char I2CAddr,unsigned char Addr,unsigned char dat)
+  18          {
+  19   1              I2CStart();
+  20   1              I2CWriteByte((I2CAddr<<1));
+  21   1              I2CWriteByte(Addr);
+  22   1              I2CWriteByte(dat);
+  23   1              I2CStop();
+  24   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     79    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       6
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

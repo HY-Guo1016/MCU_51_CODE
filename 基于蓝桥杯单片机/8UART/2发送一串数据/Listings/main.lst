@@ -1,0 +1,79 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              03/22/2023 22:21:46 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN ..\Output\main.obj
+COMPILER INVOKED BY: d:\Keil_v5\C51\BIN\C51.EXE ..\Source\main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(..\Li
+                    -stings\main.lst) OBJECT(..\Output\main.obj)
+
+line level    source
+
+   1          #include <STC15F2K60S2.H>
+   2          #include "UART.h"
+   3          
+   4          void Timer0_Init(void);         //1毫秒@11.0592MHz
+   5          void main()
+   6          {
+   7   1              UartInit();
+   8   1              Timer0_Init();
+   9   1              while(1)
+  10   1              {
+  11   2                      if(Recv_flag)
+  12   2                      {
+  13   3                              Recv_flag=0;
+  14   3                              Start_Timer = 0;
+  15   3                              SendString(Recv_buf);
+  16   3                              clr_recv_buf();
+  17   3                      }
+  18   2              }
+  19   1      
+  20   1      }
+  21          
+  22          
+  23          void Timer0_Init(void)          //1毫秒@11.0592MHz
+  24          {
+  25   1              AUXR &= 0x7F;                   //定时器时钟12T模式
+  26   1              TMOD &= 0xF0;                   //设置定时器模式
+  27   1              TMOD |= 0x01;                   //设置定时器模式
+  28   1              TL0 = 0x66;                             //设置定时初始值
+  29   1              TH0 = 0xFC;                             //设置定时初始值
+  30   1              TF0 = 0;                                //清除TF0标志
+  31   1              ET0 = 1;
+  32   1              TR0 = 1;                                //定时器0开始计时
+  33   1      }
+  34          
+  35          
+  36          void Timer0_ISR() interrupt 1
+  37          {
+  38   1              TR0 = 0;
+  39   1              if(Start_Timer)
+  40   1              {
+  41   2                      Recv_Timer_Cnt++;
+  42   2                      if(Recv_Timer_Cnt>5)
+  43   2                      {
+  44   3                              Recv_flag = 1;
+  45   3                              Recv_Timer_Cnt = 0;
+  46   3                              Recv_cnt = 0;
+  47   3                      }
+  48   2              }
+  49   1              TL0 = 0x66;                             //设置定时初始值
+  50   1              TH0 = 0xFC;                             //设置定时初始值
+  51   1              TR0 = 1;
+  52   1      
+  53   1      }
+
+C51 COMPILER V9.60.0.0   MAIN                                                              03/22/2023 22:21:46 PAGE 2   
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     95    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

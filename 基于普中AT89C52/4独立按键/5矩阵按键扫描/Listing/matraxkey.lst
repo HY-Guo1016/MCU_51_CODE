@@ -1,0 +1,49 @@
+C51 COMPILER V9.60.0.0   MATRAXKEY                                                         01/11/2023 22:56:33 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MATRAXKEY
+OBJECT MODULE PLACED IN ..\Output\matraxkey.obj
+COMPILER INVOKED BY: d:\Keil_v5\C51\BIN\C51.EXE ..\Source\matraxkey.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(
+                    -..\Listing\matraxkey.lst) OBJECT(..\Output\matraxkey.obj)
+
+line level    source
+
+   1          #include "matraxkey.h"
+   2          
+   3          unsigned char key_scan()
+   4          {
+   5   1              unsigned char KeyNum = 0;
+   6   1              keyin1 = 1;     keyin2 = 1;     keyin3 = 1;     keyin4 = 1;
+   7   1              keyout1 = 0;    keyout2 = 1;    keyout3 = 1;    keyout4 = 1;
+   8   1              if(!keyin1||!keyin2||!keyin3||!keyin4)
+   9   1              {
+  10   2                      Delayxms(20);//按键消抖
+  11   2                      if(!keyin1||!keyin2||!keyin3||!keyin4)
+  12   2                      {
+  13   3                              if(!keyin1)
+  14   3                                      KeyNum = 1;
+  15   3                              if(!keyin2)
+  16   3                                      KeyNum = 2;
+  17   3                              if(!keyin3)
+  18   3                                      KeyNum = 3;
+  19   3                              if(!keyin4)
+  20   3                                      KeyNum = 4;
+  21   3                      }while(!keyin1||!keyin2||!keyin3||!keyin4);//松手等待
+  22   2              }
+  23   1                      
+  24   1              return KeyNum;
+  25   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     89    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       1
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

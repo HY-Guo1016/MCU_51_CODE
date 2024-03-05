@@ -1,0 +1,6 @@
+"..\Output\main.obj",
+"..\Output\display.obj",
+"..\Output\CX20106A.obj",
+"..\Output\delay.obj" 
+TO "..\Output\³¬Éù" 
+PRINT("..\Listings\³¬Éù.m51") RAMSIZE(256) 

@@ -1,0 +1,5 @@
+"..\Output\main.obj",
+"..\Output\delay.obj",
+"..\Output\display.obj" 
+TO "..\Output\中断数码管显示" 
+PRINT("..\Listing\中断数码管显示.m51") RAMSIZE(256) 

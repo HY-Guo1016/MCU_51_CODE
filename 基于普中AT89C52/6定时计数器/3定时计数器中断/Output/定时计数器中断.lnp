@@ -1,0 +1,3 @@
+"..\Output\main.obj" 
+TO "..\Output\定时计数器中断" 
+PRINT("..\Listing\定时计数器中断.m51") RAMSIZE(256) 

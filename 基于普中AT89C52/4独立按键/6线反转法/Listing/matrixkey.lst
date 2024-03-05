@@ -1,0 +1,71 @@
+C51 COMPILER V9.60.0.0   MATRIXKEY                                                         01/16/2023 00:36:21 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MATRIXKEY
+OBJECT MODULE PLACED IN ..\Output\matrixkey.obj
+COMPILER INVOKED BY: d:\Keil_v5\C51\BIN\C51.EXE ..\Source\matrixkey.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(
+                    -..\Listing\matrixkey.lst) OBJECT(..\Output\matrixkey.obj)
+
+line level    source
+
+   1          #include "matrixkey.h"
+   2          
+   3          unsigned char key_scan()
+   4          {
+   5   1              static unsigned char temp,temp2;
+   6   1              static unsigned char KeyNum=20;
+   7   1              
+   8   1              KEYPORT = 0x0F;//先给列零，判断行
+   9   1              temp = KEYPORT;
+  10   1              if(temp != 0x0F)
+  11   1              {
+  12   2                      Delayxms(20);//按键消抖
+  13   2                      if(temp != 0x0F)//消抖后再次判断是否按下
+  14   2                      {
+  15   3                              temp = KEYPORT && 0x0F;//提取矩阵键盘对应的列号
+  16   3                              KEYPORT = 0xF0;//给行全0，判断列
+  17   3                              temp2 = KEYPORT && 0xF0;//提取矩阵键盘对应的行号
+  18   3                      }
+  19   2              }while(KEYPORT != 0x0F);//松手等待
+  20   1              
+  21   1              switch(temp+temp2)
+  22   1              {
+  23   2                      case 0xEE:KeyNum = 1;break;
+  24   2                      case 0xDE:KeyNum = 2;break;
+  25   2                      case 0xBE:KeyNum = 3;break;
+  26   2                      case 0x7E:KeyNum = 4;break;
+  27   2                      
+  28   2                      case 0xED:KeyNum = 5;break;
+  29   2                      case 0xDD:KeyNum = 6;break;
+  30   2                      case 0xBD:KeyNum = 7;break;
+  31   2                      case 0x7D:KeyNum = 8;break;
+  32   2                      
+  33   2                      case 0xEB:KeyNum = 9;break;
+  34   2                      case 0xDB:KeyNum = 10;break;
+  35   2                      case 0xBB:KeyNum = 11;break;
+  36   2                      case 0x7B:KeyNum = 12;break;
+  37   2                      
+  38   2                      case 0xE7:KeyNum = 13;break;
+  39   2                      case 0xD7:KeyNum = 14;break;
+  40   2                      case 0xB7:KeyNum = 15;break;
+  41   2                      case 0x77:KeyNum = 16;break;
+  42   2                      default: break;
+  43   2              }
+  44   1              return KeyNum;
+  45   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    199    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      3    ----
+   IDATA SIZE       =   ----    ----
+C51 COMPILER V9.60.0.0   MATRIXKEY                                                         01/16/2023 00:36:21 PAGE 2   
+
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

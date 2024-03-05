@@ -1,0 +1,72 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              01/02/2023 19:33:39 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN ..\Output\main.obj
+COMPILER INVOKED BY: d:\Keil_v5\C51\BIN\C51.EXE ..\Source\main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(..\Li
+                    -sting\main.lst) OBJECT(..\Output\main.obj)
+
+line level    source
+
+   1          #include <reg51.h>
+   2          #include "delay.h"
+   3          
+   4          void main()
+   5          {
+   6   1              unsigned char leddata[]={ 
+   7   1       
+   8   1                      0x3F,  //"0"
+   9   1                      0x06,  //"1"
+  10   1                      0x5B,  //"2"
+  11   1                      0x4F,  //"3"
+  12   1                      0x66,  //"4"
+  13   1                      0x6D,  //"5"
+  14   1                      0x7D,  //"6"
+  15   1                      0x07,  //"7"
+  16   1                      0x7F,  //"8"
+  17   1                      0x6F,  //"9"
+  18   1                      0x77,  //"A"
+  19   1                      0x7C,  //"B"
+  20   1                      0x39,  //"C"
+  21   1                      0x5E,  //"D"
+  22   1                      0x79,  //"E"
+  23   1                      0x71,  //"F"
+  24   1                      0x76,  //"H"
+  25   1                      0x38,  //"L"
+  26   1                      0x37,  //"n"
+  27   1                      0x3E,  //"u"
+  28   1                      0x73,  //"P"
+  29   1                      0x5C,  //"o"
+  30   1                      0x40,  //"-"
+  31   1                      0x00,  //Ï¨Ãð
+  32   1                      0x00  //×Ô¶¨Òå
+  33   1       
+  34   1                               };
+  35   1              unsigned char i;
+  36   1              P2 = 0x00;                                       
+  37   1              while(1)
+  38   1              {
+  39   2                      
+  40   2                      for(i=0;i<16;i++)
+  41   2                      {
+  42   3                              P0 = leddata[i];
+  43   3                              Delayxms(2000);
+  44   3                      }
+  45   2              }
+  46   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     53    ----
+   CONSTANT SIZE    =     25    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----      26
+C51 COMPILER V9.60.0.0   MAIN                                                              01/02/2023 19:33:39 PAGE 2   
+
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

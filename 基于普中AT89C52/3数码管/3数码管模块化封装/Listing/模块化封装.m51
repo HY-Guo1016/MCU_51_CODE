@@ -1,0 +1,135 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    01/11/2023  22:43:01  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+D:\KEIL_V5\C51\BIN\BL51.EXE ..\Output\delay.obj, ..\Output\main.obj, ..\Output\display.obj TO ..\Output\模块化封装 PRINT
+>>  (..\Listing\模块化封装.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  ..\Output\delay.obj (DELAY)
+  ..\Output\main.obj (MAIN)
+  ..\Output\display.obj (DISPLAY)
+  D:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+  D:\KEIL_V5\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  ..\Output\模块化封装 (DELAY)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0008H     UNIT         ?DT?DISPLAY
+            DATA    0010H     0001H     UNIT         _DATA_GROUP_
+            IDATA   0011H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     008CH     UNIT         ?C_C51STARTUP
+            CODE    008FH     0026H     UNIT         ?PR?DISPLAY?DISPLAY
+            CODE    00B5H     0021H     UNIT         ?CO?DISPLAY
+            CODE    00D6H     0014H     UNIT         ?PR?_DELAYXMS?DELAY
+            CODE    00EAH     000BH     UNIT         ?C_INITSEG
+            CODE    00F5H     0005H     UNIT         ?PR?MAIN?MAIN
+
+
+
+OVERLAY MAP OF MODULE:   ..\Output\模块化封装 (DELAY)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?MAIN
+  +--> ?C_INITSEG
+
+?PR?MAIN?MAIN                  -----    -----
+  +--> ?PR?DISPLAY?DISPLAY
+
+?PR?DISPLAY?DISPLAY            0010H    0001H
+  +--> ?CO?DISPLAY
+  +--> ?PR?_DELAYXMS?DELAY
+
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  01/11/2023  22:43:01  PAGE 2
+
+
+SYMBOL TABLE OF MODULE:  ..\Output\模块化封装 (DELAY)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        DELAY
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:00D6H         PUBLIC        _Delayxms
+  -------         PROC          _DELAYXMS
+  D:0006H         SYMBOL        xms
+  -------         DO            
+  D:0005H         SYMBOL        i
+  D:0004H         SYMBOL        j
+  -------         ENDDO         
+  C:00D6H         LINE#         5
+  C:00D6H         LINE#         6
+  C:00D6H         LINE#         8
+  C:00DAH         LINE#         9
+  C:00DAH         LINE#         10
+  C:00DCH         LINE#         11
+  C:00DEH         LINE#         13
+  C:00DEH         LINE#         14
+  C:00E0H         LINE#         15
+  C:00E2H         LINE#         16
+  C:00E7H         LINE#         19
+  C:00E9H         LINE#         21
+  -------         ENDPROC       _DELAYXMS
+  -------         ENDMOD        DELAY
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:00F5H         PUBLIC        main
+  -------         PROC          MAIN
+  C:00F5H         LINE#         5
+  C:00F5H         LINE#         6
+  C:00F5H         LINE#         8
+  C:00F5H         LINE#         9
+  C:00F5H         LINE#         10
+  C:00F8H         LINE#         11
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        DISPLAY
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:00A0H         PUBLIC        P2
+  C:00CEH         PUBLIC        HC138
+  D:0008H         PUBLIC        LEDBUF
+  C:00B5H         PUBLIC        leddata
+  C:008FH         PUBLIC        display
+  -------         PROC          DISPLAY
+  -------         DO            
+  D:0010H         SYMBOL        i
+  -------         ENDDO         
+  C:008FH         LINE#         40
+  C:008FH         LINE#         41
+  C:008FH         LINE#         45
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  01/11/2023  22:43:01  PAGE 3
+
+
+  C:009BH         LINE#         47
+  C:00A3H         LINE#         49
+  C:00AAH         LINE#         51
+  C:00ACH         LINE#         52
+  C:00B2H         LINE#         53
+  C:00B4H         LINE#         55
+  -------         ENDPROC       DISPLAY
+  -------         ENDMOD        DISPLAY
+
+Program Size: data=18.0 xdata=0 code=250
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

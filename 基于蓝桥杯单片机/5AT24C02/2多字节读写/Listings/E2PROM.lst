@@ -1,0 +1,63 @@
+C51 COMPILER V9.60.0.0   E2PROM                                                            03/16/2023 21:07:49 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE E2PROM
+OBJECT MODULE PLACED IN ..\Output\E2PROM.obj
+COMPILER INVOKED BY: d:\Keil_v5\C51\BIN\C51.EXE ..\Source\E2PROM.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(..\
+                    -Listings\E2PROM.lst) OBJECT(..\Output\E2PROM.obj)
+
+line level    source
+
+   1          #include "E2PROM.h"
+   2          
+   3          void EEPRead(unsigned char I2CAddr,unsigned char addr,unsigned char *buf,unsigned char len)
+   4          {
+   5   1              I2CStart();
+   6   1              I2CWriteByte(I2CAddr<<1);
+   7   1              I2CWriteByte(addr);
+   8   1              I2CStart();
+   9   1              I2CWriteByte((I2CAddr<<1)|0x01);//后续是读操作，从这个字节开始往下读
+  10   1              while(len > 1)
+  11   1              {
+  12   2                      *buf++ = I2CReadByte();
+  13   2                      SendAck(0);
+  14   2                      len--;
+  15   2              }
+  16   1              *buf = I2CReadByte();
+  17   1              SendAck(1);
+  18   1              I2CStop();
+  19   1      }
+  20          
+  21          void EEPWrite(unsigned char I2CAddr,unsigned char Addr,unsigned char *buf,unsigned char len)
+  22          {
+  23   1              while(len>0)
+  24   1              {
+  25   2                      do{
+  26   3                              I2CStart();
+  27   3                              if(!(I2CWriteByte(I2CAddr<<1)))
+  28   3                                      break;
+  29   3                              I2CStop();
+  30   3                      }while(1);
+  31   2                      
+  32   2                      
+  33   2                      I2CWriteByte(Addr++);
+  34   2                      I2CWriteByte(*buf++);
+  35   2                      I2CStop();
+  36   2                      //Delayxms(15);
+  37   2                      len--;
+  38   2              }
+  39   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    176    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----      12
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

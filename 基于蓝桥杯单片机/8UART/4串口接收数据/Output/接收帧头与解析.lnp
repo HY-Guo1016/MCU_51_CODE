@@ -1,0 +1,6 @@
+"..\Output\main.obj",
+"..\Output\UART.obj",
+"..\Output\delay.obj",
+"..\Output\time.obj" 
+TO "..\Output\接收帧头与解析" 
+PRINT("..\Listings\接收帧头与解析.m51") RAMSIZE(256) 

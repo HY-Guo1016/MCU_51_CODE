@@ -1,0 +1,5 @@
+"..\Output\delay.obj",
+"..\Output\main.obj",
+"..\Output\display.obj" 
+TO "..\Output\模块化封装" 
+PRINT("..\Listing\模块化封装.m51") RAMSIZE(256) 

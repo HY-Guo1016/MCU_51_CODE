@@ -1,0 +1,6 @@
+"..\Output\main.obj",
+"..\Output\key.obj",
+"..\Output\delay.obj",
+"..\Output\display.obj" 
+TO "..\Output\°´¼ü" 
+PRINT("..\Listings\°´¼ü.m51") RAMSIZE(256) 

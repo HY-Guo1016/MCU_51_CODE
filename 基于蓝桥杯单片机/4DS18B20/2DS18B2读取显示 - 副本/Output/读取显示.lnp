@@ -1,0 +1,8 @@
+"..\Output\main.obj",
+"..\Output\OneWire.obj",
+"..\Output\display.obj",
+"..\Output\delay.obj",
+"..\Output\DS18B20.obj",
+"..\Output\UART.obj" 
+TO "..\Output\读取显示" 
+PRINT("..\Listings\读取显示.m51") RAMSIZE(256) 

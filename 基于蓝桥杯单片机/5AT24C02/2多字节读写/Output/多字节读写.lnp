@@ -1,0 +1,7 @@
+"..\Output\main.obj",
+"..\Output\I2C.obj",
+"..\Output\E2PROM.obj",
+"..\Output\display.obj",
+"..\Output\delay.obj" 
+TO "..\Output\多字节读写" 
+PRINT("..\Listings\多字节读写.m51") RAMSIZE(256) 

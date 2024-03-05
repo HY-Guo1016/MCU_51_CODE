@@ -1,0 +1,105 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    01/01/2023  21:24:16  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+D:\KEIL_V5\C51\BIN\BL51.EXE ..\Output\main.obj, ..\Output\delay.obj TO ..\Output\移位运算符 PRINT (..\Listing\移位运算符
+>> .m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  ..\Output\main.obj (MAIN)
+  ..\Output\delay.obj (DELAY)
+  D:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  ..\Output\移位运算符 (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0002H     UNIT         _DATA_GROUP_
+            IDATA   000AH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0027H     UNIT         ?PR?MAIN?MAIN
+            CODE    002AH     0016H     UNIT         ?PR?_DELAYXMS?DELAY
+            CODE    0040H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   ..\Output\移位运算符 (MAIN)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?MAIN
+
+?PR?MAIN?MAIN                  0008H    0002H
+  +--> ?PR?_DELAYXMS?DELAY
+
+
+
+SYMBOL TABLE OF MODULE:  ..\Output\移位运算符 (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00A0H         PUBLIC        P2
+  C:0003H         PUBLIC        main
+  -------         PROC          MAIN
+  -------         DO            
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  01/01/2023  21:24:16  PAGE 2
+
+
+  D:0008H         SYMBOL        LED
+  D:0009H         SYMBOL        i
+  -------         ENDDO         
+  C:0003H         LINE#         4
+  C:0003H         LINE#         5
+  C:0003H         LINE#         6
+  C:0009H         LINE#         7
+  C:0009H         LINE#         8
+  C:0009H         LINE#         9
+  C:001BH         LINE#         10
+  C:0023H         LINE#         11
+  C:0028H         LINE#         12
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        DELAY
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:002AH         PUBLIC        _Delayxms
+  -------         PROC          _DELAYXMS
+  D:0006H         SYMBOL        xms
+  -------         DO            
+  D:0006H         SYMBOL        i
+  D:0005H         SYMBOL        j
+  D:0007H         SYMBOL        k
+  -------         ENDDO         
+  C:002AH         LINE#         5
+  C:002AH         LINE#         6
+  C:002AH         LINE#         8
+  C:0034H         LINE#         9
+  C:0034H         LINE#         10
+  C:0036H         LINE#         11
+  C:0038H         LINE#         13
+  C:0038H         LINE#         14
+  C:003AH         LINE#         15
+  C:003CH         LINE#         16
+  C:003FH         LINE#         17
+  -------         ENDPROC       _DELAYXMS
+  -------         ENDMOD        DELAY
+
+Program Size: data=11.0 xdata=0 code=76
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,7 @@
+"..\Output\main.obj",
+"..\Output\E2PROM.obj",
+"..\Output\I2C.obj",
+"..\Output\display.obj",
+"..\Output\delay.obj" 
+TO "..\Output\上电次数计数" 
+PRINT("..\Listings\上电次数计数.m51") RAMSIZE(256) 

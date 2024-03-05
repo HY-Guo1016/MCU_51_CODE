@@ -1,0 +1,75 @@
+C51 COMPILER V9.59.0.0   MAIN                                                              07/18/2023 16:04:08 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN ..\Output\main.obj
+COMPILER INVOKED BY: D:\Keil__v5\C51\BIN\C51.EXE ..\Source\main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(..\L
+                    -istings\main.lst) TABS(2) OBJECT(..\Output\main.obj)
+
+line level    source
+
+   1          #include <reg51.h>
+   2          #include "display.h"
+   3          
+   4          void Timer0_Init(void);
+   5          void display_Service();
+   6          void main()
+   7          {
+   8   1        Timer0_Init();
+   9   1      
+  10   1        while(1)
+  11   1        {
+  12   2          display_Service();
+  13   2        }
+  14   1      }
+  15          
+  16          void display_Service()
+  17          {
+  18   1        LEDBUF[7] = 7;
+  19   1        LEDBUF[6] = 6;
+  20   1        LEDBUF[5] = 5;
+  21   1        LEDBUF[4] = 4;
+  22   1        LEDBUF[3] = 3;
+  23   1        LEDBUF[2] = 2;
+  24   1        LEDBUF[1] = 1;
+  25   1        LEDBUF[0] = 0;
+  26   1      }
+  27          void Timer0_Init(void)    //1毫秒@11.0592MHz
+  28          {
+  29   1        TMOD &= 0xF0;     //设置定时器模式
+  30   1        TMOD |= 0x01;     //设置定时器模式
+  31   1        TL0 = 0x66;       //设置定时初始值
+  32   1        TH0 = 0xFC;       //设置定时初始值
+  33   1        TF0 = 0;        //清除TF0标志
+  34   1        ET0 = 1;
+  35   1        EA = 1;
+  36   1        TR0 = 1;        //定时器0开始计时
+  37   1      }
+  38          
+  39          
+  40          
+  41          void timer0_ISR(void) interrupt 1
+  42          {
+  43   1        TR0 = 0;
+  44   1        display();
+  45   1        TL0 = 0x66;       //设置定时初始值
+  46   1        TH0 = 0xFC;       //设置定时初始值
+  47   1        TR0 = 1;
+  48   1      
+  49   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    123    ----
+   CONSTANT SIZE    =   ----    ----
+C51 COMPILER V9.59.0.0   MAIN                                                              07/18/2023 16:04:08 PAGE 2   
+
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

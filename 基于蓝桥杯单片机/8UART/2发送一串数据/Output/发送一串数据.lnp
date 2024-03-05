@@ -1,0 +1,4 @@
+"..\Output\main.obj",
+"..\Output\UART.obj" 
+TO "..\Output\发送一串数据" 
+PRINT("..\Listings\发送一串数据.m51") RAMSIZE(256) 

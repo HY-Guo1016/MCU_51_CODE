@@ -1,0 +1,6 @@
+"..\Output\main.obj",
+"..\Output\key.obj",
+"..\Output\display.obj",
+"..\Output\delay.obj" 
+TO "..\Output\独立按键分窗口" 
+PRINT("..\Listing\独立按键分窗口.m51") RAMSIZE(256) 

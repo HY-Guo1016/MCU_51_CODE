@@ -1,0 +1,119 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    02/20/2023  21:07:42  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+D:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\main.obj TO .\Objects\ª„±‡PWM PRINT (.\Listings\ª„±‡PWM.m51) RAMSIZE (256)
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\main.obj (MAIN)
+
+
+LINK MAP OF MODULE:  .\Objects\ª„±‡PWM (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0083H     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\ª„±‡PWM (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  D:00E0H         SYMBOL        ACC
+  B:00A8H.0       SYMBOL        EX0
+  C:0025H         SYMBOL        EX0_INIT
+  C:002AH         SYMBOL        EX0_ISR
+  B:00A8H.2       SYMBOL        EX1
+  C:003CH         SYMBOL        EX1_INIT
+  C:0041H         SYMBOL        EX1_ISR
+  C:007AH         SYMBOL        FIN
+  C:0037H         SYMBOL        FIN2
+  C:004EH         SYMBOL        FIN3
+  C:006CH         SYMBOL        GO2
+  C:0077H         SYMBOL        GO3
+  B:0088H.0       SYMBOL        IT0
+  B:0088H.2       SYMBOL        IT1
+  C:0016H         SYMBOL        MAIN
+  D:00A0H         SYMBOL        P2
+  D:00D0H         SYMBOL        PSW
+  B:0088H.5       SYMBOL        TF0
+  D:008CH         SYMBOL        TH0
+  C:0053H         SYMBOL        TIMER0_INIT
+  C:0064H         SYMBOL        TIMER0_ISR
+  D:008AH         SYMBOL        TL0
+  D:0089H         SYMBOL        TMOD
+  B:0088H.4       SYMBOL        TR0
+  C:0000H         LINE#         2
+  C:0003H         LINE#         4
+  C:000BH         LINE#         6
+  C:0013H         LINE#         8
+  C:0016H         LINE#         12
+  C:0018H         LINE#         13
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  02/20/2023  21:07:42  PAGE 2
+
+
+  C:001AH         LINE#         14
+  C:001DH         LINE#         15
+  C:0020H         LINE#         16
+  C:0023H         LINE#         17
+  C:0025H         LINE#         21
+  C:0027H         LINE#         22
+  C:0029H         LINE#         23
+  C:002AH         LINE#         25
+  C:002CH         LINE#         26
+  C:002EH         LINE#         27
+  C:002FH         LINE#         28
+  C:0031H         LINE#         29
+  C:0032H         LINE#         30
+  C:0035H         LINE#         31
+  C:0037H         LINE#         33
+  C:0039H         LINE#         34
+  C:003BH         LINE#         35
+  C:003CH         LINE#         39
+  C:003EH         LINE#         40
+  C:0040H         LINE#         41
+  C:0041H         LINE#         43
+  C:0043H         LINE#         44
+  C:0045H         LINE#         45
+  C:0046H         LINE#         46
+  C:0048H         LINE#         47
+  C:0049H         LINE#         48
+  C:004CH         LINE#         49
+  C:004EH         LINE#         51
+  C:0050H         LINE#         52
+  C:0052H         LINE#         53
+  C:0053H         LINE#         56
+  C:0056H         LINE#         57
+  C:0059H         LINE#         58
+  C:005CH         LINE#         59
+  C:005FH         LINE#         60
+  C:0061H         LINE#         61
+  C:0063H         LINE#         62
+  C:0064H         LINE#         65
+  C:0066H         LINE#         66
+  C:0067H         LINE#         67
+  C:006AH         LINE#         68
+  C:006CH         LINE#         70
+  C:006DH         LINE#         71
+  C:006EH         LINE#         72
+  C:0071H         LINE#         73
+  C:0074H         LINE#         74
+  C:0077H         LINE#         76
+  C:007AH         LINE#         78
+  C:007DH         LINE#         79
+  C:0080H         LINE#         80
+  C:0082H         LINE#         81
+  -------         ENDMOD        MAIN
+
+Program Size: data=8.0 xdata=0 code=131
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

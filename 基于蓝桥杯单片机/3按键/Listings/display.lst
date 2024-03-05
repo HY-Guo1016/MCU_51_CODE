@@ -1,0 +1,210 @@
+C51 COMPILER V9.60.0.0   DISPLAY                                                           03/06/2023 22:38:52 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE DISPLAY
+OBJECT MODULE PLACED IN ..\Output\display.obj
+COMPILER INVOKED BY: d:\Keil_v5\C51\BIN\C51.EXE ..\Source\display.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(..
+                    -\Listings\display.lst) OBJECT(..\Output\display.obj)
+
+line level    source
+
+   1          #include "display.h"
+   2          
+   3          //段选数组
+   4          unsigned char code leddata[]={ 
+   5           
+   6                          0xC0,  //"0"
+   7                          0xF9,  //"1"
+   8                          0xA4,  //"2"
+   9                          0xB0,  //"3"
+  10                          0x99,  //"4"
+  11                          0x92,  //"5"
+  12                          0x82,  //"6"
+  13                          0xF8,  //"7"
+  14                          0x80,  //"8"
+  15                          0x90,  //"9"
+  16                          0x88,  //"A"
+  17                          0x83,  //"B"
+  18                          0xC6,  //"C"
+  19                          0xA1,  //"D"
+  20                          0x86,  //"E"
+  21                          0x8E,  //"F"
+  22                          0x89,  //"H"
+  23                          0xC7,  //"L"
+  24                          0xC8,  //"n"
+  25                          0xC1,  //"u"
+  26                          0x8C,  //"P"
+  27                          0xA3,  //"o"
+  28                          0xBF,  //"-"
+  29                          0xFF,  //熄灭
+  30                          0xFF  //自定义
+  31           
+  32                                   };
+  33          //位选数组
+  34          unsigned char code place[]={0x01,0x02,0x04,0x08,0x10,0x20,0x40,0x80};
+  35          //数据缓冲区
+  36          unsigned char LEDBUF[] = {7,7,7,7,7,7,7,7};
+  37          void display()
+  38          {
+  39   1              static unsigned char i = 0;
+  40   1              switch(i)
+  41   1              {
+  42   2                      case 0:
+  43   2                      //消影
+  44   2                      P0 = 0xFF;
+  45   2                      P2 = (P2 & 0x1f) | 0xE0;
+  46   2                      P2 = (P2 & 0x1f);
+  47   2                      //送段码
+  48   2                      P0 = leddata[LEDBUF[i]];
+  49   2                      P2 = (P2 & 0x1f) | 0xE0;
+  50   2                      P2 = (P2 & 0x1f);
+  51   2                      //送位选
+  52   2                      P0 = place[i];
+  53   2                      P2 = (P2 & 0x1f) | 0xC0;
+  54   2                      P2 = (P2 & 0x1f);
+C51 COMPILER V9.60.0.0   DISPLAY                                                           03/06/2023 22:38:52 PAGE 2   
+
+  55   2                      //通过i实现数码管
+  56   2                      i++;
+  57   2                      break;
+  58   2                      
+  59   2                      case 1:
+  60   2                      //消影
+  61   2                      P0 = 0xFF;
+  62   2                      P2 = (P2 & 0x1f) | 0xE0;
+  63   2                      P2 = (P2 & 0x1f);
+  64   2                      //送段码
+  65   2                      P0 = leddata[LEDBUF[i]];
+  66   2                      P2 = (P2 & 0x1f) | 0xE0;
+  67   2                      P2 = (P2 & 0x1f);
+  68   2                      //送位选
+  69   2                      P0 = place[i];
+  70   2                      P2 = (P2 & 0x1f) | 0xC0;
+  71   2                      P2 = (P2 & 0x1f);
+  72   2                      //通过i实现数码管
+  73   2                      i++;
+  74   2                      break;
+  75   2                      
+  76   2                      case 2:
+  77   2                      //消影
+  78   2                      P0 = 0xFF;
+  79   2                      P2 = (P2 & 0x1f) | 0xE0;
+  80   2                      P2 = (P2 & 0x1f);
+  81   2                      //送段码
+  82   2                      P0 = leddata[LEDBUF[i]];
+  83   2                      P2 = (P2 & 0x1f) | 0xE0;
+  84   2                      P2 = (P2 & 0x1f);
+  85   2                      //送位选
+  86   2                      P0 = place[i];
+  87   2                      P2 = (P2 & 0x1f) | 0xC0;
+  88   2                      P2 = (P2 & 0x1f);
+  89   2                      //通过i实现数码管
+  90   2                      i++;
+  91   2                      break;
+  92   2                                                      
+  93   2                      case 3:
+  94   2                      //消影
+  95   2                      P0 = 0xFF;
+  96   2                      P2 = (P2 & 0x1f) | 0xE0;
+  97   2                      P2 = (P2 & 0x1f);
+  98   2                      //送段码
+  99   2                      P0 = leddata[LEDBUF[i]];
+ 100   2                      P2 = (P2 & 0x1f) | 0xE0;
+ 101   2                      P2 = (P2 & 0x1f);
+ 102   2                      //送位选
+ 103   2                      P0 = place[i];
+ 104   2                      P2 = (P2 & 0x1f) | 0xC0;
+ 105   2                      P2 = (P2 & 0x1f);
+ 106   2                      //通过i实现数码管
+ 107   2                      i++;
+ 108   2                      break;
+ 109   2                                                                      
+ 110   2                      case 4:
+ 111   2                      //消影
+ 112   2                      P0 = 0xFF;
+ 113   2                      P2 = (P2 & 0x1f) | 0xE0;
+ 114   2                      P2 = (P2 & 0x1f);
+ 115   2                      //送段码
+ 116   2                      P0 = leddata[LEDBUF[i]];
+C51 COMPILER V9.60.0.0   DISPLAY                                                           03/06/2023 22:38:52 PAGE 3   
+
+ 117   2                      P2 = (P2 & 0x1f) | 0xE0;
+ 118   2                      P2 = (P2 & 0x1f);
+ 119   2                      //送位选
+ 120   2                      P0 = place[i];
+ 121   2                      P2 = (P2 & 0x1f) | 0xC0;
+ 122   2                      P2 = (P2 & 0x1f);
+ 123   2                      //通过i实现数码管
+ 124   2                      i++;
+ 125   2                      break;
+ 126   2                                                                      
+ 127   2                      case 5:
+ 128   2                      //消影
+ 129   2                      P0 = 0xFF;
+ 130   2                      P2 = (P2 & 0x1f) | 0xE0;
+ 131   2                      P2 = (P2 & 0x1f);
+ 132   2                      //送段码
+ 133   2                      P0 = leddata[LEDBUF[i]];
+ 134   2                      P2 = (P2 & 0x1f) | 0xE0;
+ 135   2                      P2 = (P2 & 0x1f);
+ 136   2                      //送位选
+ 137   2                      P0 = place[i];
+ 138   2                      P2 = (P2 & 0x1f) | 0xC0;
+ 139   2                      P2 = (P2 & 0x1f);
+ 140   2                      //通过i实现数码管
+ 141   2                      i++;
+ 142   2                      break;
+ 143   2                                                                              
+ 144   2                      case 6:
+ 145   2                      //消影
+ 146   2                      P0 = 0xFF;
+ 147   2                      P2 = (P2 & 0x1f) | 0xE0;
+ 148   2                      P2 = (P2 & 0x1f);
+ 149   2                      //送段码
+ 150   2                      P0 = leddata[LEDBUF[i]];
+ 151   2                      P2 = (P2 & 0x1f) | 0xE0;
+ 152   2                      P2 = (P2 & 0x1f);
+ 153   2                      //送位选
+ 154   2                      P0 = place[i];
+ 155   2                      P2 = (P2 & 0x1f) | 0xC0;
+ 156   2                      P2 = (P2 & 0x1f);
+ 157   2                      //通过i实现数码管
+ 158   2                      i++;
+ 159   2                      break;
+ 160   2                                                              
+ 161   2                      case 7:
+ 162   2                      //消影
+ 163   2                      P0 = 0xFF;
+ 164   2                      P2 = (P2 & 0x1f) | 0xE0;
+ 165   2                      P2 = (P2 & 0x1f);
+ 166   2                      //送段码
+ 167   2                      P0 = leddata[LEDBUF[i]];
+ 168   2                      P2 = (P2 & 0x1f) | 0xE0;
+ 169   2                      P2 = (P2 & 0x1f);
+ 170   2                      //送位选
+ 171   2                      P0 = place[i];
+ 172   2                      P2 = (P2 & 0x1f) | 0xC0;
+ 173   2                      P2 = (P2 & 0x1f);
+ 174   2                      //通过i实现数码管
+ 175   2                      i=0;
+ 176   2                      break;
+ 177   2                      
+ 178   2                      default:break;
+C51 COMPILER V9.60.0.0   DISPLAY                                                           03/06/2023 22:38:52 PAGE 4   
+
+ 179   2              }
+ 180   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    162    ----
+   CONSTANT SIZE    =     33    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      9    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

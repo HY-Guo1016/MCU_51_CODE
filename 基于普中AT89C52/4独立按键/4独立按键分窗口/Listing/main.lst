@@ -1,0 +1,191 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              01/07/2023 23:17:14 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN ..\Output\main.obj
+COMPILER INVOKED BY: d:\Keil_v5\C51\BIN\C51.EXE ..\Source\main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(..\Li
+                    -sting\main.lst) OBJECT(..\Output\main.obj)
+
+line level    source
+
+   1          #include <reg51.h>
+   2          #include "delay.h"
+   3          #include "display.h"
+   4          #include "key.h"
+   5          
+   6          void dis_service();
+   7          void key_service();
+   8          unsigned int i;
+   9          unsigned char wnd=1;
+  10          long parm1 = 12685;
+  11          long parm2 = 25454;
+  12          long parm3 = 32755;
+  13          long parm4 = 24752;
+  14          void main()
+  15          {
+  16   1              
+  17   1              for(i=0;i<100;i++)//开机界面
+  18   1              {
+  19   2                      display();
+  20   2              }
+  21   1                      
+  22   1              while(1)
+  23   1              {
+  24   2                      dis_service();
+  25   2                      key_service();
+  26   2                      display();
+  27   2              }
+  28   1      }
+  29          
+  30          
+  31          void dis_service()
+  32          {
+  33   1              
+  34   1              
+  35   1              switch(wnd)
+  36   1                      {
+  37   2                              case 1:
+  38   2                                      LEDBUF[0] = 20;
+  39   2                                      LEDBUF[1] = 1;
+  40   2                                      LEDBUF[2] = 22;
+  41   2                                      LEDBUF[3] = parm1/10000%10;
+  42   2                                      LEDBUF[4] = parm1/1000%10;
+  43   2                                      LEDBUF[5] = parm1/100%10;
+  44   2                                      LEDBUF[6] = parm1/10%10;
+  45   2                                      LEDBUF[7] = parm1%10;
+  46   2                                      break;
+  47   2                              case 2:
+  48   2                                      LEDBUF[0] = 20;
+  49   2                                      LEDBUF[1] = 2;
+  50   2                                      LEDBUF[2] = 22;
+  51   2                                      LEDBUF[3] = parm2/10000%10;
+  52   2                                      LEDBUF[4] = parm2/1000%10;
+  53   2                                      LEDBUF[5] = parm2/100%10;
+  54   2                                      LEDBUF[6] = parm2/10%10;
+C51 COMPILER V9.60.0.0   MAIN                                                              01/07/2023 23:17:14 PAGE 2   
+
+  55   2                                      LEDBUF[7] = parm2%10;
+  56   2                                      break;
+  57   2                              case 3:
+  58   2                                      LEDBUF[0] = 20;
+  59   2                                      LEDBUF[1] = 3;
+  60   2                                      LEDBUF[2] = 22;
+  61   2                                      LEDBUF[3] = parm3/10000%10;
+  62   2                                      LEDBUF[4] = parm3/1000%10;
+  63   2                                      LEDBUF[5] = parm3/100%10;
+  64   2                                      LEDBUF[6] = parm3/10%10;
+  65   2                                      LEDBUF[7] = parm3%10;
+  66   2                                      break;
+  67   2                              case 4:
+  68   2                                      LEDBUF[0] = 20;
+  69   2                                      LEDBUF[1] = 4;
+  70   2                                      LEDBUF[2] = 22;
+  71   2                                      LEDBUF[3] = parm4/10000%10;
+  72   2                                      LEDBUF[4] = parm4/1000%10;
+  73   2                                      LEDBUF[5] = parm4/100%10;
+  74   2                                      LEDBUF[6] = parm4/10%10;
+  75   2                                      LEDBUF[7] = parm4%10;
+  76   2                                      break;
+  77   2                              default:break;
+  78   2                              }
+  79   1      }
+  80          
+  81          void key_service()
+  82          {
+  83   1              switch(key_scan())
+  84   1              {
+  85   2                      case 0:break;
+  86   2                      case 1:
+  87   2                              wnd++;
+  88   2                              if(wnd>4)
+  89   2                                      wnd=1;
+  90   2                              break;
+  91   2                      case 2:
+  92   2                              switch(wnd)
+  93   2                              {
+  94   3                                      case 1:
+  95   3                                              parm1++;
+  96   3                                              if(parm1>99999)
+  97   3                                                      parm1 = 0;
+  98   3                                              break;
+  99   3                                      case 2:
+ 100   3                                              parm2++;
+ 101   3                                              if(parm2>99999)
+ 102   3                                                      parm2 = 0;
+ 103   3                                              break;
+ 104   3                                      case 3:
+ 105   3                                              parm3++;
+ 106   3                                              if(parm3>99999)
+ 107   3                                                      parm3 = 0;
+ 108   3                                              break;
+ 109   3                                      case 4:
+ 110   3                                              parm4++;
+ 111   3                                              if(parm4>99999)
+ 112   3                                                      parm4 = 0;
+ 113   3                                              break;
+ 114   3                                      default:break;
+ 115   3                              }
+ 116   2                              break;
+C51 COMPILER V9.60.0.0   MAIN                                                              01/07/2023 23:17:14 PAGE 3   
+
+ 117   2                      case 3:
+ 118   2                              switch(wnd)
+ 119   2                              {
+ 120   3                                      case 1:
+ 121   3                                              parm1--;
+ 122   3                                              if(parm1<0)
+ 123   3                                                      parm1 = 99999;
+ 124   3                                              break;
+ 125   3                                      case 2:
+ 126   3                                              parm2--;
+ 127   3                                              if(parm2<0)
+ 128   3                                                      parm2 = 99999;
+ 129   3                                              break;
+ 130   3                                      case 3:
+ 131   3                                              parm3--;
+ 132   3                                              if(parm3<0)
+ 133   3                                                      parm3 = 99999;
+ 134   3                                              break;
+ 135   3                                      case 4:
+ 136   3                                              parm4--;
+ 137   3                                              if(parm4<0)
+ 138   3                                                      parm4 = 99999;
+ 139   3                                              break;
+ 140   3                                      default:break;
+ 141   3                              }
+ 142   2                              break;
+ 143   2                      case 4:
+ 144   2                              switch(wnd)
+ 145   2                              {
+ 146   3                                      case 1:
+ 147   3                                              parm1=0;
+ 148   3                                              break;
+ 149   3                                      case 2:
+ 150   3                                              parm2=0;
+ 151   3                                              break;
+ 152   3                                      case 3:
+ 153   3                                              parm3=0;
+ 154   3                                              break;
+ 155   3                                      case 4:
+ 156   3                                              parm4=0;
+ 157   3                                              break;
+ 158   3                                      default:break;
+ 159   3                              }
+ 160   2                              break;
+ 161   2                      default:break;
+ 162   2              }
+ 163   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   1182    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     19    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

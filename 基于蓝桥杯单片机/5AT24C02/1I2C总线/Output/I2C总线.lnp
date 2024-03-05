@@ -1,0 +1,6 @@
+"..\Output\main.obj",
+"..\Output\I2C.obj",
+"..\Output\display.obj",
+"..\Output\E2PROM.obj" 
+TO "..\Output\I2C总线" 
+PRINT("..\Listings\I2C总线.m51") RAMSIZE(256) 

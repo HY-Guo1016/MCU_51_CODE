@@ -1,0 +1,4 @@
+"..\Output\main.obj",
+"..\Output\delay.obj" 
+TO "..\Output\发送一帧数据" 
+PRINT("..\Listings\发送一帧数据.m51") RAMSIZE(256) 

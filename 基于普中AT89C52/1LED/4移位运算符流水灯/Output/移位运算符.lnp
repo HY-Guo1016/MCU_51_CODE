@@ -1,0 +1,4 @@
+"..\Output\main.obj",
+"..\Output\delay.obj" 
+TO "..\Output\移位运算符" 
+PRINT("..\Listing\移位运算符.m51") RAMSIZE(256) 

@@ -1,0 +1,58 @@
+C51 COMPILER V9.60.0.0   DS18B20                                                           04/12/2023 00:09:42 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE DS18B20
+OBJECT MODULE PLACED IN ..\Output\DS18B20.obj
+COMPILER INVOKED BY: d:\Keil_v5\C51\BIN\C51.EXE ..\Source\DS18B20.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(..
+                    -\Listings\DS18B20.lst) OBJECT(..\Output\DS18B20.obj)
+
+line level    source
+
+   1          #include "DS18B20.h"
+   2          
+   3          bit Start18B20()
+   4          {
+   5   1              bit ack;
+   6   1              EA = 0;
+   7   1              ack = OneWireRst();
+   8   1              if(!ack)
+   9   1              {
+  10   2                      WriteOneWire(SKIP_ROM);
+  11   2                      WriteOneWire(CONVERT_T);//启动温度转换
+  12   2              }
+  13   1              EA = 1;
+  14   1              return ack;
+  15   1      
+  16   1      }
+  17          
+  18          bit Read18B20(int *tmp)
+  19          {
+  20   1              bit ack;
+  21   1              unsigned char MSB,LSB;
+  22   1              ack = OneWireRst();//初始化
+  23   1              if(!ack)
+  24   1              {
+  25   2                      WriteOneWire(SKIP_ROM);
+  26   2                      WriteOneWire(READ_SCRATCHPAD);
+  27   2                      //读转换结果
+  28   2                      LSB = ReadOneWire();
+  29   2                      MSB = ReadOneWire();
+  30   2                      
+  31   2                      *tmp = ((int)MSB<<8)+LSB;
+  32   2              }
+  33   1              return ack;
+  34   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     81    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       4
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----       2
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,55 @@
+C51 COMPILER V9.60.0.0   CX20106A                                                          04/06/2023 19:08:39 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE CX20106A
+OBJECT MODULE PLACED IN ..\Output\CX20106A.obj
+COMPILER INVOKED BY: d:\Keil_v5\C51\BIN\C51.EXE ..\Source\CX20106A.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.
+                    -.\Listings\CX20106A.lst) OBJECT(..\Output\CX20106A.obj)
+
+line level    source
+
+   1          #include "CX20106A.h"
+   2          
+   3          void WaveS()
+   4          {
+   5   1              unsigned char WavNum = 10;
+   6   1              while(WavNum--)
+   7   1              {
+   8   2                      WaveSend = ~WaveSend;
+   9   2                      Delay12us();
+  10   2              }
+  11   1      
+  12   1      }
+  13          
+  14          void WaveR(unsigned int *tmp)
+  15          {
+  16   1              TH0 = 0;
+  17   1              TL0 = 0;
+  18   1              TR0 = 1;
+  19   1              while(WaveRecv&!TF0);
+  20   1              TR0 = 0;
+  21   1              if(TF0)
+  22   1              {
+  23   2                      TF0 = 0;
+  24   2                      *tmp = 65535;
+  25   2              }       
+  26   1              if(!WaveRecv)
+  27   1              {
+  28   2                      *tmp = ((TH0<<8)+TL0)*0.017*100;//保留两位小数
+  29   2              }
+  30   1      
+  31   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    104    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       4
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

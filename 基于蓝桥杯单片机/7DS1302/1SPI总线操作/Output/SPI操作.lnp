@@ -1,0 +1,6 @@
+"..\Output\main.obj",
+"..\Output\SPI.obj",
+"..\Output\DS1302.obj",
+"..\Output\display.obj" 
+TO "..\Output\SPI²Ù×÷" 
+PRINT("..\Listings\SPI²Ù×÷.m51") RAMSIZE(256) 

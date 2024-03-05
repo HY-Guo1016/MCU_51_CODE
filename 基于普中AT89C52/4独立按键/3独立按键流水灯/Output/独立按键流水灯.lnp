@@ -1,0 +1,5 @@
+"..\Output\delay.obj",
+"..\Output\key.obj",
+"..\Output\main.obj" 
+TO "..\Output\独立按键流水灯" 
+PRINT("..\Listing\独立按键流水灯.m51") RAMSIZE(256) 

@@ -1,0 +1,85 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              03/20/2023 21:40:16 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN ..\Output\main.obj
+COMPILER INVOKED BY: d:\Keil_v5\C51\BIN\C51.EXE ..\Source\main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(..\Li
+                    -stings\main.lst) OBJECT(..\Output\main.obj)
+
+line level    source
+
+   1          #include <reg51.h>
+   2          #include "DS1302.h"
+   3          #include "display.h"
+   4          void Timer0_Init(void);
+   5          void disp_service();
+   6          unsigned char TimerFlag = 0;
+   7          unsigned char TimerCnt=0;
+   8          void main()
+   9          {
+  10   1              DS1302Init();
+  11   1              Timer0_Init();
+  12   1              while(1)
+  13   1              {
+  14   2                      ReadTimer();
+  15   2                      disp_service();
+  16   2              }
+  17   1      }
+  18          
+  19          void Timer0_Init(void)          //1毫秒@12.000MHz
+  20          {
+  21   1              TMOD &= 0xF0;                   //设置定时器模式
+  22   1              TMOD |= 0x01;                   //设置定时器模式
+  23   1              TL0 = 0x66;                             //设置定时初始值
+  24   1              TH0 = 0xFC;                             //设置定时初始值
+  25   1              TF0 = 0;                                //清除TF0标志
+  26   1              ET0 = 1;
+  27   1              EA = 1;
+  28   1              TR0 = 1;                                //定时器0开始计时
+  29   1      }
+  30          void Timer0_ISR() interrupt 1
+  31          {
+  32   1              TR0 = 0;
+  33   1              TimerCnt++;
+  34   1              if(TimerCnt == 20)
+  35   1              {
+  36   2                      TimerFlag = 1;
+  37   2              }
+  38   1              display();
+  39   1              TL0 = 0x66;                             //设置定时初始值
+  40   1              TH0 = 0xFC;                             //设置定时初始值
+  41   1      
+  42   1              TR0 = 1;
+  43   1      }
+  44          
+  45          void disp_service()
+  46          {
+  47   1              if(TimerFlag == 1)
+  48   1              {
+  49   2                      TimerFlag = 0;
+  50   2                      LEDBUF[7] = DS1302Time[2]>>4;
+  51   2                      LEDBUF[6] = DS1302Time[2]&0x0F;
+  52   2                      LEDBUF[5] = 22;
+  53   2                      LEDBUF[4] = DS1302Time[1]>>4;
+  54   2                      LEDBUF[3] = DS1302Time[1]&0x0F;
+C51 COMPILER V9.60.0.0   MAIN                                                              03/20/2023 21:40:16 PAGE 2   
+
+  55   2                      LEDBUF[2] = 22;
+  56   2                      LEDBUF[1] = DS1302Time[0]>>4;
+  57   2                      LEDBUF[0] = DS1302Time[0]&0x0F;
+  58   2              }
+  59   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    169    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

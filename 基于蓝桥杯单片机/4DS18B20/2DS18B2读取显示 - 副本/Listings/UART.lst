@@ -1,0 +1,91 @@
+C51 COMPILER V9.60.0.0   UART                                                              04/12/2023 00:09:42 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE UART
+OBJECT MODULE PLACED IN ..\Output\UART.obj
+COMPILER INVOKED BY: d:\Keil_v5\C51\BIN\C51.EXE ..\Source\UART.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(..\Li
+                    -stings\UART.lst) OBJECT(..\Output\UART.obj)
+
+line level    source
+
+   1          #include "UART.h"
+   2          
+   3          unsigned char RecBUF[10];
+   4          unsigned char Rec_cnt = 0;
+   5          bit Rec_Flag = 0;
+   6          void UartInit(void)             //9600bps@11.0592MHz
+   7          {
+   8   1              SCON = 0x50;            //8位数据,可变波特率
+   9   1              AUXR |= 0x01;           //串口1选择定时器2为波特率发生器
+  10   1              AUXR &= 0xFB;           //定时器时钟12T模式
+  11   1              T2L = 0xE8;                     //设置定时初始值
+  12   1              T2H = 0xFF;                     //设置定时初始值
+  13   1              ES = 1;
+  14   1              AUXR |= 0x10;           //定时器2开始计时
+  15   1      }
+  16          
+  17          
+  18          void SendByte(unsigned char dat)
+  19          {
+  20   1              SBUF = dat;
+  21   1              while(!TI);
+  22   1              TI = 0;
+  23   1      }
+  24          
+  25          void SendString(unsigned char *dat)
+  26          {
+  27   1              while(*dat != '\0')
+  28   1              {
+  29   2                      SendByte(*dat++);
+  30   2              }
+  31   1      
+  32   1      }
+  33          
+  34          char putchar(char c)
+  35          {
+  36   1              SendByte(c);
+  37   1              return c;
+  38   1      }
+  39          
+  40          //void clr_RecBUF()
+  41          //{
+  42          //      unsigned char i;
+  43          //      for(i=0;i<10;i++)
+  44          //      {
+  45          //              RecBUF[i] = 0;
+  46          //      }
+  47          //}
+  48          
+  49          //void UART_ISR() interrupt 4
+  50          //{
+  51          //      if(RI)
+  52          //      {
+  53          //              RI = 0;
+  54          //              Timer_Start = 1;
+C51 COMPILER V9.60.0.0   UART                                                              04/12/2023 00:09:42 PAGE 2   
+
+  55          //              if(Rec_cnt<REC_MAX)
+  56          //              {
+  57          //                      RecBUF[Rec_cnt] = SBUF;
+  58          //                      Rec_cnt++;
+  59          //              }
+  60          //              else
+  61          //                      Rec_cnt = 0;
+  62          //              Timer_Rec_Cnt = 0;
+  63          //      }
+  64          //}
+  65          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     71    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     11       3
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      1    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

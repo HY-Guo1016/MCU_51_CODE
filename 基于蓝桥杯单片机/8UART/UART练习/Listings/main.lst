@@ -1,0 +1,139 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              04/16/2023 00:46:39 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN ..\Output\main.obj
+COMPILER INVOKED BY: d:\Keil_v5\C51\BIN\C51.EXE ..\Source\main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(..\Li
+                    -stings\main.lst) OBJECT(..\Output\main.obj)
+
+line level    source
+
+   1          #include <reg51.h>
+   2          #include "time.h"
+   3          #include "key.h"
+   4          #include "UART.h"
+   5          #include <intrins.h>
+   6          void Rec_Ser();
+   7          void disp_ser();
+   8          unsigned int a=10;
+   9          void main()
+  10          {
+  11   1              UartInit();
+  12   1              Timer0_Init();
+  13   1              EA = 1;
+  14   1              while(1)
+  15   1              {
+  16   2                      //Rec_Ser();
+  17   2                      printf("woainiliumenghan:%d\n\r",a);
+  18   2                      //Delayxms(1000);
+  19   2              }
+  20   1      }
+  21          
+  22          //void disp_ser()
+  23          //{
+  24          //      switch(KeyScan())
+  25          //      {
+  26          //              case 4:
+  27          //                      LEDBUF[0] = 0;
+  28          //                      break;
+  29          //              case 5:
+  30          //                      LEDBUF[0] = 1;
+  31          //                      break;
+  32          //              case 6:
+  33          //                      LEDBUF[0] = 2;
+  34          //                      break;
+  35          //              case 7:
+  36          //                      LEDBUF[0] = 3;
+  37          //                      break;
+  38          //              case 8:
+  39          //                      LEDBUF[0] = 4;
+  40          //                      break;
+  41          //              case 9:
+  42          //                      LEDBUF[0] = 5;
+  43          //                      break;
+  44          //              case 10:
+  45          //                      LEDBUF[0] = 6;
+  46          //                      break;
+  47          //              case 11:
+  48          //                      LEDBUF[0] = 7;
+  49          //                      break;
+  50          //              case 12:
+  51          //                      LEDBUF[0] = 8;
+  52          //                      break;
+  53          //              case 13:
+  54          //                      LEDBUF[0] = 9;
+C51 COMPILER V9.60.0.0   MAIN                                                              04/16/2023 00:46:39 PAGE 2   
+
+  55          //                      break;
+  56          //              case 14:
+  57          //                      LEDBUF[0] = 10;
+  58          //                      break;
+  59          //              case 15:
+  60          //                      LEDBUF[0] = 11;
+  61          //                      break;
+  62          //              case 16:
+  63          //                      LEDBUF[0] = 12;
+  64          //                      break;
+  65          //              case 17:
+  66          //                      LEDBUF[0] = 13;
+  67          //                      break;
+  68          //              case 18:
+  69          //                      LEDBUF[0] = 14;
+  70          //                      break;
+  71          //              case 19:
+  72          //                      LEDBUF[0] = 15;
+  73          //                      break;
+  74          //      }
+  75          //      
+  76          //}
+  77          void Rec_Ser()
+  78          {
+  79   1              if((_testbit_ (Rec_Flag)))
+  80   1              {
+  81   2                      SendString(Rec_BUF);
+  82   2                      clr_Rec_BUF();
+  83   2              }
+  84   1              //Sendbyte(Rec_dat);
+  85   1      //      if((_testbit_ (Rec_Flag)))
+  86   1      //      {
+  87   1      //              switch(Rec_dat)
+  88   1      //              {
+  89   1      //                      case 'a':
+  90   1      //                              P0 = 0xFE;
+  91   1      //                              P2 = (P2&0x1F)|0x80;
+  92   1      //                              P2 = P2&0x1F;
+  93   1      //                              break;
+  94   1      //                      case 'b':
+  95   1      //                              P0 = 0xFD;
+  96   1      //                              P2 = (P2&0x1F)|0x80;
+  97   1      //                              P2 = P2&0x1F;
+  98   1      //                              break;
+  99   1      //                      case 'c':
+ 100   1      //                              P0 = 0xFB;
+ 101   1      //                              P2 = (P2&0x1F)|0x80;
+ 102   1      //                              P2 = P2&0x1F;
+ 103   1      //                              break;
+ 104   1      //                      case 'd':
+ 105   1      //                              P0 = 0xF7;
+ 106   1      //                              P2 = (P2&0x1F)|0x80;
+ 107   1      //                              P2 = P2&0x1F;
+ 108   1      //                              break;
+ 109   1      //              }
+ 110   1      //      }
+ 111   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     42    ----
+   CONSTANT SIZE    =     22    ----
+C51 COMPILER V9.60.0.0   MAIN                                                              04/16/2023 00:46:39 PAGE 3   
+
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

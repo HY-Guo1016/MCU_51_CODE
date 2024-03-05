@@ -1,0 +1,112 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              01/24/2023 23:48:19 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN ..\Output\main.obj
+COMPILER INVOKED BY: d:\Keil_v5\C51\BIN\C51.EXE ..\Source\main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(..\Li
+                    -stings\main.lst) OBJECT(..\Output\main.obj)
+
+line level    source
+
+   1          #include <reg51.h>
+   2          #include "display.h"
+   3          
+   4          void Timer0Init(void);          //1毫秒@12.000MHz
+   5          void Timer1Init(void);          //50毫秒@12.000MHz
+   6          void display_service();
+   7          
+   8          unsigned char sec_cnt = 20;
+   9          unsigned char sec = 60;
+  10          void main()
+  11          {
+  12   1              
+  13   1              Timer0Init();
+  14   1              Timer1Init();
+  15   1              EA = 1;
+  16   1              while(1)
+  17   1              {
+  18   2                      display_service();
+  19   2              }
+  20   1      }
+  21          
+  22          void display_service()
+  23          {
+  24   1              LEDBUF[7] = 23;
+  25   1              LEDBUF[6] = 23;
+  26   1              LEDBUF[5] = 23;
+  27   1              LEDBUF[4] = 23;
+  28   1              LEDBUF[3] = 23;
+  29   1              LEDBUF[2] = 23;
+  30   1              LEDBUF[1] = sec/10;
+  31   1              LEDBUF[0] = sec%10;
+  32   1              
+  33   1      }
+  34          void Timer0Init(void)           //1毫秒@11.0592MHz
+  35          {
+  36   1              TMOD &= 0xF0;           //设置定时器模式
+  37   1              TMOD |= 0x01;           //设置定时器模式
+  38   1              TL0 = (65536-1000)%256;         //设置定时初始值
+  39   1              TH0 = (65536-1000)/256;         //设置定时初始值
+  40   1              TF0 = 0;                //清除TF0标志
+  41   1              ET0 = 1;
+  42   1              TR0 = 1;                //定时器0开始计时
+  43   1      }
+  44          
+  45          
+  46          
+  47          void Timer1Init(void)           //50毫秒@11.0592MHz
+  48          {
+  49   1              TMOD &= 0x0F;           //设置定时器模式
+  50   1              TMOD |= 0x10;           //设置定时器模式
+  51   1              TL1 = (65536-50000)%256;                //设置定时初始值
+  52   1              TH1 = (65536-50000)/256;                //设置定时初始值
+  53   1              TF1 = 0;                //清除TF1标志
+  54   1              ET1 = 1;
+C51 COMPILER V9.60.0.0   MAIN                                                              01/24/2023 23:48:19 PAGE 2   
+
+  55   1              TR1 = 1;                //定时器1开始计时
+  56   1      }
+  57          
+  58          
+  59          void timer0_ISR(void) interrupt 1
+  60          {
+  61   1              TR0 = 0;
+  62   1              display();
+  63   1              TL0 = 0x18;             //设置定时初始值
+  64   1              TH0 = 0xFC;             //设置定时初始值
+  65   1              TR0 = 1;
+  66   1      
+  67   1      }
+  68          
+  69          void timer1_ISR(void) interrupt 3
+  70          {
+  71   1              TR1 = 0;
+  72   1              sec_cnt--;
+  73   1              if(sec_cnt == 0)
+  74   1              {
+  75   2                      sec_cnt = 20;
+  76   2                      sec--;
+  77   2                      if(sec == 0)
+  78   2                      {
+  79   3                              sec = 60;
+  80   3                      }
+  81   2              }
+  82   1              TL1 = (65536-50000)%256;                //设置定时初始值
+  83   1              TH1 = (65536-50000)/256;                //设置定时初始值
+  84   1              TR1 = 1;
+  85   1      
+  86   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    189    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

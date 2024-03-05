@@ -1,0 +1,5 @@
+"..\Output\delay.obj",
+"..\Output\main.obj",
+"..\Output\display.obj" 
+TO "..\Output\数码管switch" 
+PRINT("..\Listing\数码管switch.m51") RAMSIZE(256) 

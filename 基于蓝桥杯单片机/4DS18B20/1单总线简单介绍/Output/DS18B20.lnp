@@ -1,0 +1,6 @@
+"..\Output\main.obj",
+"..\Output\display.obj",
+"..\Output\delay.obj",
+"..\Output\OneWire.obj" 
+TO "..\Output\DS18B20" 
+PRINT("..\Listings\DS18B20.m51") RAMSIZE(256) 

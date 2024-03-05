@@ -1,0 +1,209 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              01/02/2023 20:48:35 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN ..\Output\main.obj
+COMPILER INVOKED BY: d:\Keil_v5\C51\BIN\C51.EXE ..\Source\main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(..\Li
+                    -sting\main.lst) OBJECT(..\Output\main.obj)
+
+line level    source
+
+   1          #include <reg51.h>
+   2          #include "delay.h"
+   3          
+   4          void main()
+   5          {
+   6   1              unsigned char code leddata[]={ 
+   7   1       
+   8   1                      0x3F,  //"0"
+   9   1                      0x06,  //"1"
+  10   1                      0x5B,  //"2"
+  11   1                      0x4F,  //"3"
+  12   1                      0x66,  //"4"
+  13   1                      0x6D,  //"5"
+  14   1                      0x7D,  //"6"
+  15   1                      0x07,  //"7"
+  16   1                      0x7F,  //"8"
+  17   1                      0x6F,  //"9"
+  18   1                      0x77,  //"A"
+  19   1                      0x7C,  //"B"
+  20   1                      0x39,  //"C"
+  21   1                      0x5E,  //"D"
+  22   1                      0x79,  //"E"
+  23   1                      0x71,  //"F"
+  24   1                      0x76,  //"H"
+  25   1                      0x38,  //"L"
+  26   1                      0x37,  //"n"
+  27   1                      0x3E,  //"u"
+  28   1                      0x73,  //"P"
+  29   1                      0x5C,  //"o"
+  30   1                      0x40,  //"-"
+  31   1                      0x00,  //Ï¨Ãð
+  32   1                      0x00  //×Ô¶¨Òå
+  33   1       
+  34   1                               };
+  35   1              unsigned char HC138[] = {0xE3,0xE7,0xEB,0xEF,0xF3,0xF7,0xFB,0xFF};
+  36   1              long int i;
+  37   1              while(1)
+  38   1              {
+  39   2                      for(i=100;i>0;i--)
+  40   2                      {
+  41   3                              P2 = HC138[0];
+  42   3                              P0 = leddata[4];
+  43   3                              Delayxms(1);
+  44   3                              
+  45   3                              P2 = HC138[1];
+  46   3                              P0 = leddata[1];
+  47   3                              Delayxms(1);
+  48   3                              
+  49   3                              P2 = HC138[2];
+  50   3                              P0 = leddata[4];
+  51   3                              Delayxms(1);
+  52   3                              
+  53   3                              P2 = HC138[3];
+  54   3                              P0 = leddata[1];
+C51 COMPILER V9.60.0.0   MAIN                                                              01/02/2023 20:48:35 PAGE 2   
+
+  55   3                              Delayxms(1);
+  56   3                              
+  57   3                              P2 = HC138[4];
+  58   3                              P0 = leddata[0];
+  59   3                              Delayxms(1);
+  60   3                              
+  61   3                              P2 = HC138[5];
+  62   3                              P0 = leddata[2];
+  63   3                              Delayxms(1);
+  64   3                              
+  65   3                              P2 = HC138[6];
+  66   3                              P0 = leddata[0];
+  67   3                              Delayxms(1);
+  68   3                              
+  69   3                              P2 = HC138[7];
+  70   3                              P0 = leddata[2];
+  71   3                              Delayxms(1);
+  72   3                      }
+  73   2                      
+  74   2                      for(i=100;i>0;i--)
+  75   2                      {
+  76   3                              P2 = HC138[0];
+  77   3                              P0 = leddata[1];
+  78   3                              Delayxms(1);
+  79   3                              
+  80   3                              P2 = HC138[1];
+  81   3                              P0 = leddata[4];
+  82   3                              Delayxms(1);
+  83   3                              
+  84   3                              P2 = HC138[2];
+  85   3                              P0 = leddata[1];
+  86   3                              Delayxms(1);
+  87   3                              
+  88   3                              P2 = HC138[3];
+  89   3                              P0 = leddata[4];
+  90   3                              Delayxms(1);
+  91   3                              
+  92   3                              P2 = HC138[4];
+  93   3                              P0 = leddata[1];
+  94   3                              Delayxms(1);
+  95   3                              
+  96   3                              P2 = HC138[5];
+  97   3                              P0 = leddata[0];
+  98   3                              Delayxms(1);
+  99   3                              
+ 100   3                              P2 = HC138[6];
+ 101   3                              P0 = leddata[2];
+ 102   3                              Delayxms(1);
+ 103   3                              
+ 104   3                              P2 = HC138[7];
+ 105   3                              P0 = leddata[0];
+ 106   3                              Delayxms(1);
+ 107   3                      }
+ 108   2                      
+ 109   2                      for(i=100;i>0;i--)
+ 110   2                      {
+ 111   3                              P2 = HC138[0];
+ 112   3                              P0 = leddata[0];
+ 113   3                              Delayxms(1);
+ 114   3                              
+ 115   3                              P2 = HC138[1];
+ 116   3                              P0 = leddata[1];
+C51 COMPILER V9.60.0.0   MAIN                                                              01/02/2023 20:48:35 PAGE 3   
+
+ 117   3                              Delayxms(1);
+ 118   3                              
+ 119   3                              P2 = HC138[2];
+ 120   3                              P0 = leddata[4];
+ 121   3                              Delayxms(1);
+ 122   3                              
+ 123   3                              P2 = HC138[3];
+ 124   3                              P0 = leddata[1];
+ 125   3                              Delayxms(1);
+ 126   3                              
+ 127   3                              P2 = HC138[4];
+ 128   3                              P0 = leddata[4];
+ 129   3                              Delayxms(1);
+ 130   3                              
+ 131   3                              P2 = HC138[5];
+ 132   3                              P0 = leddata[1];
+ 133   3                              Delayxms(1);
+ 134   3                              
+ 135   3                              P2 = HC138[6];
+ 136   3                              P0 = leddata[0];
+ 137   3                              Delayxms(1);
+ 138   3                              
+ 139   3                              P2 = HC138[7];
+ 140   3                              P0 = leddata[2];
+ 141   3                              Delayxms(1);
+ 142   3                      }
+ 143   2                      
+ 144   2                      for(i=100;i>0;i--)
+ 145   2                      {
+ 146   3                              P2 = HC138[0];
+ 147   3                              P0 = leddata[1];
+ 148   3                              Delayxms(1);
+ 149   3                              
+ 150   3                              P2 = HC138[1];
+ 151   3                              P0 = leddata[0];
+ 152   3                              Delayxms(1);
+ 153   3                              
+ 154   3                              P2 = HC138[2];
+ 155   3                              P0 = leddata[1];
+ 156   3                              Delayxms(1);
+ 157   3                              
+ 158   3                              P2 = HC138[3];
+ 159   3                              P0 = leddata[4];
+ 160   3                              Delayxms(1);
+ 161   3                              
+ 162   3                              P2 = HC138[4];
+ 163   3                              P0 = leddata[1];
+ 164   3                              Delayxms(1);
+ 165   3                              
+ 166   3                              P2 = HC138[5];
+ 167   3                              P0 = leddata[4];
+ 168   3                              Delayxms(1);
+ 169   3                              
+ 170   3                              P2 = HC138[6];
+ 171   3                              P0 = leddata[1];
+ 172   3                              Delayxms(1);
+ 173   3                              
+ 174   3                              P2 = HC138[7];
+ 175   3                              P0 = leddata[0];
+ 176   3                              Delayxms(1);
+ 177   3                      }
+ 178   2              }
+C51 COMPILER V9.60.0.0   MAIN                                                              01/02/2023 20:48:35 PAGE 4   
+
+ 179   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    799    ----
+   CONSTANT SIZE    =     33    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----      12
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

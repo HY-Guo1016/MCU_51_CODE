@@ -1,0 +1,5 @@
+"..\Output\delay.obj",
+"..\Output\display.obj",
+"..\Output\main.obj" 
+TO "..\Output\数码管应用" 
+PRINT("..\Listing\数码管应用.m51") RAMSIZE(256) 

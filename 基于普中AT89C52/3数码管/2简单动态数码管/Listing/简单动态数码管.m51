@@ -1,0 +1,231 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    01/02/2023  20:48:35  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+D:\KEIL_V5\C51\BIN\BL51.EXE ..\Output\delay.obj, ..\Output\main.obj TO ..\Output\简单动态数码管 PRINT (..\Listing\简单动
+>> 态数码管.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  ..\Output\delay.obj (DELAY)
+  ..\Output\main.obj (MAIN)
+  D:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+  D:\KEIL_V5\C51\LIB\C51S.LIB (?C?COPY)
+  D:\KEIL_V5\C51\LIB\C51S.LIB (?C?SLCMP)
+
+
+LINK MAP OF MODULE:  ..\Output\简单动态数码管 (DELAY)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     000CH     UNIT         _DATA_GROUP_
+            IDATA   0014H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     031FH     UNIT         ?PR?MAIN?MAIN
+            CODE    0322H     010CH     UNIT         ?C?LIB_CODE
+            CODE    042EH     0021H     UNIT         ?CO?MAIN
+            CODE    044FH     0014H     UNIT         ?PR?_DELAYXMS?DELAY
+            CODE    0463H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   ..\Output\简单动态数码管 (DELAY)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?MAIN
+
+?PR?MAIN?MAIN                  0008H    000CH
+  +--> ?CO?MAIN
+  +--> ?PR?_DELAYXMS?DELAY
+
+
+
+SYMBOL TABLE OF MODULE:  ..\Output\简单动态数码管 (DELAY)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        DELAY
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  01/02/2023  20:48:35  PAGE 2
+
+
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:044FH         PUBLIC        _Delayxms
+  -------         PROC          _DELAYXMS
+  D:0006H         SYMBOL        xms
+  -------         DO            
+  D:0005H         SYMBOL        i
+  D:0004H         SYMBOL        j
+  -------         ENDDO         
+  C:044FH         LINE#         5
+  C:044FH         LINE#         6
+  C:044FH         LINE#         8
+  C:0453H         LINE#         9
+  C:0453H         LINE#         10
+  C:0455H         LINE#         11
+  C:0457H         LINE#         13
+  C:0457H         LINE#         14
+  C:0459H         LINE#         15
+  C:045BH         LINE#         16
+  C:0460H         LINE#         19
+  C:0462H         LINE#         21
+  -------         ENDPROC       _DELAYXMS
+  -------         ENDMOD        DELAY
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:00A0H         PUBLIC        P2
+  C:0003H         PUBLIC        main
+  C:0447H         SYMBOL        _?ix1000
+  -------         PROC          MAIN
+  -------         DO            
+  C:042EH         SYMBOL        leddata
+  D:0008H         SYMBOL        HC138
+  D:0010H         SYMBOL        i
+  -------         ENDDO         
+  C:0003H         LINE#         4
+  C:0003H         LINE#         5
+  C:0003H         LINE#         35
+  C:0016H         LINE#         37
+  C:0016H         LINE#         38
+  C:0016H         LINE#         39
+  C:0036H         LINE#         40
+  C:0036H         LINE#         41
+  C:0039H         LINE#         42
+  C:0040H         LINE#         43
+  C:0047H         LINE#         45
+  C:004AH         LINE#         46
+  C:0051H         LINE#         47
+  C:0058H         LINE#         49
+  C:005BH         LINE#         50
+  C:0062H         LINE#         51
+  C:0069H         LINE#         53
+  C:006CH         LINE#         54
+  C:0073H         LINE#         55
+  C:007AH         LINE#         57
+  C:007DH         LINE#         58
+  C:0084H         LINE#         59
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  01/02/2023  20:48:35  PAGE 3
+
+
+  C:008BH         LINE#         61
+  C:008EH         LINE#         62
+  C:0095H         LINE#         63
+  C:009CH         LINE#         65
+  C:009FH         LINE#         66
+  C:00A6H         LINE#         67
+  C:00ADH         LINE#         69
+  C:00B0H         LINE#         70
+  C:00B7H         LINE#         71
+  C:00BEH         LINE#         72
+  C:00D9H         LINE#         74
+  C:00F9H         LINE#         75
+  C:00F9H         LINE#         76
+  C:00FCH         LINE#         77
+  C:0103H         LINE#         78
+  C:010AH         LINE#         80
+  C:010DH         LINE#         81
+  C:0114H         LINE#         82
+  C:011BH         LINE#         84
+  C:011EH         LINE#         85
+  C:0125H         LINE#         86
+  C:012CH         LINE#         88
+  C:012FH         LINE#         89
+  C:0136H         LINE#         90
+  C:013DH         LINE#         92
+  C:0140H         LINE#         93
+  C:0147H         LINE#         94
+  C:014EH         LINE#         96
+  C:0151H         LINE#         97
+  C:0158H         LINE#         98
+  C:015FH         LINE#         100
+  C:0162H         LINE#         101
+  C:0169H         LINE#         102
+  C:0170H         LINE#         104
+  C:0173H         LINE#         105
+  C:017AH         LINE#         106
+  C:0181H         LINE#         107
+  C:019CH         LINE#         109
+  C:01BCH         LINE#         110
+  C:01BCH         LINE#         111
+  C:01BFH         LINE#         112
+  C:01C6H         LINE#         113
+  C:01CDH         LINE#         115
+  C:01D0H         LINE#         116
+  C:01D7H         LINE#         117
+  C:01DEH         LINE#         119
+  C:01E1H         LINE#         120
+  C:01E8H         LINE#         121
+  C:01EFH         LINE#         123
+  C:01F2H         LINE#         124
+  C:01F9H         LINE#         125
+  C:0200H         LINE#         127
+  C:0203H         LINE#         128
+  C:020AH         LINE#         129
+  C:0211H         LINE#         131
+  C:0214H         LINE#         132
+  C:021BH         LINE#         133
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  01/02/2023  20:48:35  PAGE 4
+
+
+  C:0222H         LINE#         135
+  C:0225H         LINE#         136
+  C:022CH         LINE#         137
+  C:0233H         LINE#         139
+  C:0236H         LINE#         140
+  C:023DH         LINE#         141
+  C:0244H         LINE#         142
+  C:025FH         LINE#         144
+  C:027FH         LINE#         145
+  C:027FH         LINE#         146
+  C:0282H         LINE#         147
+  C:0289H         LINE#         148
+  C:0290H         LINE#         150
+  C:0293H         LINE#         151
+  C:029AH         LINE#         152
+  C:02A1H         LINE#         154
+  C:02A4H         LINE#         155
+  C:02ABH         LINE#         156
+  C:02B2H         LINE#         158
+  C:02B5H         LINE#         159
+  C:02BCH         LINE#         160
+  C:02C3H         LINE#         162
+  C:02C6H         LINE#         163
+  C:02CDH         LINE#         164
+  C:02D4H         LINE#         166
+  C:02D7H         LINE#         167
+  C:02DEH         LINE#         168
+  C:02E5H         LINE#         170
+  C:02E8H         LINE#         171
+  C:02EFH         LINE#         172
+  C:02F6H         LINE#         174
+  C:02F9H         LINE#         175
+  C:0300H         LINE#         176
+  C:0307H         LINE#         177
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        ?C?COPY
+  C:03F2H         PUBLIC        ?C?COPY
+  -------         ENDMOD        ?C?COPY
+
+  -------         MODULE        ?C?SLCMP
+  C:0418H         PUBLIC        ?C?SLCMP
+  -------         ENDMOD        ?C?SLCMP
+
+Program Size: data=21.0 xdata=0 code=1135
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,4 @@
+"..\Output\main.obj",
+"..\Output\display.obj" 
+TO "..\Output\定时计数器数码管" 
+PRINT("..\Listings\定时计数器数码管.m51") RAMSIZE(256) 

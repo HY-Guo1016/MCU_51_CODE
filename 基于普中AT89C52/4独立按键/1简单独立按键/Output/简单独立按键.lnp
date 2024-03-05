@@ -1,0 +1,5 @@
+"..\Output\delay.obj",
+"..\Output\main.obj",
+"..\Output\key.obj" 
+TO "..\Output\简单独立按键" 
+PRINT("..\Listing\简单独立按键.m51") RAMSIZE(256) 

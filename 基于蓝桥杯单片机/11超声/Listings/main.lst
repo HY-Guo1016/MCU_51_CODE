@@ -1,0 +1,99 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              04/06/2023 19:08:39 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN ..\Output\main.obj
+COMPILER INVOKED BY: d:\Keil_v5\C51\BIN\C51.EXE ..\Source\main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(..\Li
+                    -stings\main.lst) OBJECT(..\Output\main.obj)
+
+line level    source
+
+   1          #include <reg51.h>
+   2          #include "CX20106A.h"
+   3          #include "display.h"
+   4          
+   5          void Timer0_Init(void);
+   6          void Timer1_Init(void);         //1毫秒@11.0592MHz
+   7          void disp_ser();
+   8          
+   9          unsigned int Dist;
+  10          unsigned char Timer1_cnt = 0;
+  11          unsigned char Timer_flag = 0;
+  12          void main()
+  13          {
+  14   1              
+  15   1              Timer0_Init();
+  16   1              Timer1_Init();
+  17   1              while(1)
+  18   1              {
+  19   2                      if(Timer_flag)
+  20   2                      {
+  21   3                              Timer_flag = 0;
+  22   3                              WaveS();
+  23   3                              WaveR(&Dist);
+  24   3                      }
+  25   2                      disp_ser();
+  26   2              }
+  27   1      
+  28   1      }
+  29          
+  30          
+  31          void Timer0_Init(void)
+  32          {
+  33   1              TMOD &= 0xF0;                   //设置定时器模式
+  34   1              TMOD |= 0x01;                   //设置定时器模式
+  35   1              TL0 = 0;                                //设置定时初始值
+  36   1              TH0 = 0;                                //设置定时初始值
+  37   1              TF0 = 0;                                //清除TF0标志
+  38   1      }
+  39          
+  40          void disp_ser()
+  41          {
+  42   1              LEDBUF[7] = Dist/10000;
+  43   1              LEDBUF[6] = Dist/1000%10;
+  44   1              LEDBUF[5] = Dist/100%10;
+  45   1              LEDBUF[4] = Dist/10%10;
+  46   1              LEDBUF[3] = Dist%10;
+  47   1      }
+  48          
+  49          void Timer1_Init(void)          //1毫秒@11.0592MHz
+  50          {
+  51   1              TMOD &= 0x0F;                   //设置定时器模式
+  52   1              TMOD |= 0x10;                   //设置定时器模式
+  53   1              TL1 = 0x66;                             //设置定时初始值
+  54   1              TH1 = 0xFC;                             //设置定时初始值
+C51 COMPILER V9.60.0.0   MAIN                                                              04/06/2023 19:08:39 PAGE 2   
+
+  55   1              TF1 = 0;                                //清除TF1标志
+  56   1              ET1 = 1;
+  57   1              EA = 1;
+  58   1              TR1 = 1;                                //定时器1开始计时
+  59   1      }
+  60          void Timer1_ISR() interrupt 3
+  61          {
+  62   1              TR1 = 0;
+  63   1              Timer1_cnt++;
+  64   1              if(Timer1_cnt==200)
+  65   1              {
+  66   2                      Timer1_cnt = 0;
+  67   2                      Timer_flag = 1;
+  68   2              }
+  69   1              display();
+  70   1              TL1 = 0x66;                             //设置定时初始值
+  71   1              TH1 = 0xFC;                             //设置定时初始值
+  72   1              TR1 = 1;
+  73   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    234    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      4    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

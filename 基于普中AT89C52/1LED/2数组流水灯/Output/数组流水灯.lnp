@@ -1,0 +1,4 @@
+"..\Output\main.obj",
+"..\Output\delay.obj" 
+TO "..\Output\数组流水灯" 
+PRINT("..\Listings\数组流水灯.m51") RAMSIZE(256) 

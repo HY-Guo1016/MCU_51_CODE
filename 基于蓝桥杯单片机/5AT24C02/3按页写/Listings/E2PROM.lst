@@ -1,0 +1,95 @@
+C51 COMPILER V9.60.0.0   E2PROM                                                            03/18/2023 15:36:29 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE E2PROM
+OBJECT MODULE PLACED IN ..\Output\E2PROM.obj
+COMPILER INVOKED BY: d:\Keil_v5\C51\BIN\C51.EXE ..\Source\E2PROM.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(..\
+                    -Listings\E2PROM.lst) OBJECT(..\Output\E2PROM.obj)
+
+line level    source
+
+   1          #include "E2PROM.h"
+   2          
+   3          void EEPRead(unsigned char I2CAddr,unsigned char addr,unsigned char *buf,unsigned char len)
+   4          {
+   5   1              I2CStart();
+   6   1              I2CWriteByte(I2CAddr<<1);
+   7   1              I2CWriteByte(addr);
+   8   1              I2CStart();
+   9   1              I2CWriteByte((I2CAddr<<1)|0x01);//后续是读操作，从这个字节开始往下读
+  10   1              while(len > 1)
+  11   1              {
+  12   2                      *buf++ = I2CReadByte();
+  13   2                      //INC R0
+  14   2                      //MOV @R0,#01H
+  15   2                      SendAck(0);
+  16   2                      len--;
+  17   2              }
+  18   1              *buf = I2CReadByte();
+  19   1              SendAck(1);
+  20   1              I2CStop();
+  21   1      }
+  22          
+  23          void EEPWrite(unsigned char I2CAddr,unsigned char Addr,unsigned char *buf,unsigned char len)
+  24          {
+  25   1              while(len>0)
+  26   1              {
+  27   2                      do{
+  28   3                              I2CStart();
+  29   3                              if(!(I2CWriteByte(I2CAddr<<1)))
+  30   3                                      break;
+  31   3                              I2CStop();
+  32   3                      }while(1);
+  33   2                      
+  34   2                      
+  35   2                      I2CWriteByte(Addr++);
+  36   2                      I2CWriteByte(*buf++);
+  37   2                      I2CStop();
+  38   2                      //Delayxms(15);
+  39   2                      len--;
+  40   2              }
+  41   1      }
+  42          
+  43          
+  44          unsigned char E2PROMWritePage(unsigned char I2CAddr,unsigned char addr,unsigned char *buf,unsigned char le
+             -n)
+  45          {
+  46   1              if(Max_addr-addr<len)
+  47   1                      return 0;
+  48   1              while(len>0)
+  49   1              {
+  50   2                      do{
+  51   3                              I2CStart();
+  52   3                              if(!(I2CWriteByte(I2CAddr<<1)))
+  53   3                                      break;
+C51 COMPILER V9.60.0.0   E2PROM                                                            03/18/2023 15:36:29 PAGE 2   
+
+  54   3                              I2CStop();
+  55   3                      }while(1);
+  56   2                      I2CWriteByte(addr);
+  57   2                      while(len>0)
+  58   2                      {
+  59   3                              I2CWriteByte(*buf++);
+  60   3                              addr++;
+  61   3                              len--;
+  62   3                              if(!(addr&page))
+  63   3                                      break;  
+  64   3                      }
+  65   2                      I2CStop();
+  66   2              }
+  67   1              return 1;
+  68   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    283    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----      18
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

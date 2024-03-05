@@ -1,0 +1,6 @@
+"..\Output\main.obj",
+"..\Output\PCF8591.obj",
+"..\Output\display.obj",
+"..\Output\iic.obj" 
+TO "..\Output\AD" 
+PRINT("..\Listings\AD.m51") RAMSIZE(256) 

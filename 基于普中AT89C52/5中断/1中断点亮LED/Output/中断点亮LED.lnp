@@ -1,0 +1,4 @@
+"..\Output\main.obj",
+"..\Output\delay.obj" 
+TO "..\Output\中断点亮LED" 
+PRINT("..\Listing\中断点亮LED.m51") RAMSIZE(256) 

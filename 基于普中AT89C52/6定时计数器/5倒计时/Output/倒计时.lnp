@@ -1,0 +1,4 @@
+"..\Output\main.obj",
+"..\Output\display.obj" 
+TO "..\Output\倒计时" 
+PRINT("..\Listings\倒计时.m51") RAMSIZE(256) 

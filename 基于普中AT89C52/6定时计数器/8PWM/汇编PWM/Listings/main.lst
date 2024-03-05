@@ -1,0 +1,132 @@
+A51 MACRO ASSEMBLER  MAIN                                                                 02/20/2023 21:07:41 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\main.obj
+ASSEMBLER INVOKED BY: d:\Keil_v5\C51\BIN\A51.EXE main.a51 SET(SMALL) DEBUG PRINT(.\Listings\main.lst) OBJECT(.\Objects\m
+                      ain.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1             ORG 0000H
+0000 020016            2             LJMP MAIN
+0003                   3             ORG 0003H
+0003 02002A            4             LJMP EX0_ISR
+000B                   5             ORG 000BH
+000B 020064            6             LJMP TIMER0_ISR
+0013                   7             ORG 0013H
+0013 020041            8             LJMP EX1_ISR
+                       9     
+                      10             
+0016                  11     MAIN:
+0016 7900             12             MOV R1,#0
+0018 7A00             13             MOV R2,#0
+001A 120025           14             LCALL EX0_INIT
+001D 12003C           15             LCALL EX1_INIT
+0020 120053           16             LCALL TIMER0_INIT
+0023 80FE             17             SJMP $
+                      18             
+                      19             
+0025                  20     EX0_INIT:;按键0作为亮度增加按键
+0025 D2A8             21             SETB EX0
+0027 D288             22             SETB IT0
+0029 22               23             RET
+002A                  24     EX0_ISR:
+002A C0E0             25             PUSH ACC
+002C C0D0             26             PUSH PSW
+002E E9               27             MOV A,R1
+002F 2414             28             ADD A,#20
+0031 F9               29             MOV R1,A
+0032 B96402           30             CJNE R1,#100,FIN2
+0035 7900             31             MOV R1,#0
+0037                  32     FIN2:
+0037 D0D0             33             POP PSW
+0039 D0E0             34             POP ACC
+003B 32               35             RETI
+                      36             
+                      37             
+003C                  38     EX1_INIT:;按键1作为亮度增加按键
+003C D2AA             39             SETB EX1
+003E D28A             40             SETB IT1
+0040 22               41             RET
+0041                  42     EX1_ISR:
+0041 C0E0             43             PUSH ACC
+0043 C0D0             44             PUSH PSW
+0045 E9               45             MOV A,R1
+0046 9414             46             SUBB A,#20
+0048 F9               47             MOV R1,A
+0049 B90002           48             CJNE R1,#0,FIN3
+004C 7900             49             MOV R1,#0
+004E                  50     FIN3:
+004E D0D0             51             POP PSW
+0050 D0E0             52             POP ACC
+0052 32               53             RETI
+                      54             
+0053                  55     TIMER0_INIT:                    ;100微秒@11.0592MHz
+0053 5389F0           56             ANL TMOD,#0F0H          ;设置定时器模式
+0056 438901           57             ORL TMOD,#01H           ;设置定时器模式
+A51 MACRO ASSEMBLER  MAIN                                                                 02/20/2023 21:07:41 PAGE     2
+
+0059 758AA4           58             MOV TL0,#0A4H           ;设置定时初始值
+005C 758CFF           59             MOV TH0,#0FFH           ;设置定时初始值
+005F C28D             60             CLR TF0                 ;清砊F0标志
+0061 D28C             61             SETB TR0                ;定时器0开始计时
+0063 22               62             RET
+                      63     
+0064                  64     TIMER0_ISR:
+0064 C28C             65             CLR TR0
+0066 0A               66             INC R2
+0067 BA6402           67             CJNE R2,#100,GO2
+006A 7A00             68             MOV R2,#0
+006C                  69     GO2:
+006C EA               70             MOV A,R2
+006D 99               71             SUBB A,R1
+006E 30E706           72             JNB ACC.7,GO3
+0071 75A0FF           73             MOV P2,#0FFH
+0074 02007A           74             LJMP FIN
+0077                  75     GO3:;如果A>R1,则让LED点亮
+0077 75A000           76             MOV P2,#0
+007A                  77     FIN:    
+007A 758AA4           78             MOV TL0,#0A4H           ;设置定时初始值
+007D 758CFF           79             MOV TH0,#0FFH           ;设置定时初始值
+0080 D28C             80             SETB TR0
+0082 32               81             RETI
+                      82     END
+A51 MACRO ASSEMBLER  MAIN                                                                 02/20/2023 21:07:41 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ACC. . . . . . . .  D ADDR   00E0H   A   
+EX0. . . . . . . .  B ADDR   00A8H.0 A   
+EX0_INIT . . . . .  C ADDR   0025H   A   
+EX0_ISR. . . . . .  C ADDR   002AH   A   
+EX1. . . . . . . .  B ADDR   00A8H.2 A   
+EX1_INIT . . . . .  C ADDR   003CH   A   
+EX1_ISR. . . . . .  C ADDR   0041H   A   
+FIN. . . . . . . .  C ADDR   007AH   A   
+FIN2 . . . . . . .  C ADDR   0037H   A   
+FIN3 . . . . . . .  C ADDR   004EH   A   
+GO2. . . . . . . .  C ADDR   006CH   A   
+GO3. . . . . . . .  C ADDR   0077H   A   
+IT0. . . . . . . .  B ADDR   0088H.0 A   
+IT1. . . . . . . .  B ADDR   0088H.2 A   
+MAIN . . . . . . .  C ADDR   0016H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+PSW. . . . . . . .  D ADDR   00D0H   A   
+TF0. . . . . . . .  B ADDR   0088H.5 A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TIMER0_INIT. . . .  C ADDR   0053H   A   
+TIMER0_ISR . . . .  C ADDR   0064H   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

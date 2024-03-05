@@ -1,0 +1,89 @@
+C51 COMPILER V9.60.0.0   DISPLAY                                                           01/17/2023 00:00:33 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE DISPLAY
+OBJECT MODULE PLACED IN ..\Output\display.obj
+COMPILER INVOKED BY: d:\Keil_v5\C51\BIN\C51.EXE ..\Source\display.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(..
+                    -\Listing\display.lst) OBJECT(..\Output\display.obj)
+
+line level    source
+
+   1          #include "display.h"
+   2          
+   3                  unsigned char code leddata[]={ 
+   4           
+   5                          0x3F,  //"0"
+   6                          0x06,  //"1"
+   7                          0x5B,  //"2"
+   8                          0x4F,  //"3"
+   9                          0x66,  //"4"
+  10                          0x6D,  //"5"
+  11                          0x7D,  //"6"
+  12                          0x07,  //"7"
+  13                          0x7F,  //"8"
+  14                          0x6F,  //"9"
+  15                          0x77,  //"A"
+  16                          0x7C,  //"B"
+  17                          0x39,  //"C"
+  18                          0x5E,  //"D"
+  19                          0x79,  //"E"
+  20                          0x71,  //"F"
+  21                          0x76,  //"H"
+  22                          0x38,  //"L"
+  23                          0x37,  //"n"
+  24                          0x3E,  //"u"
+  25                          0x73,  //"P"
+  26                          0x5C,  //"o"
+  27                          0x40,  //"-"
+  28                          0x00,  //熄灭
+  29                          0x00  //自定义
+  30           
+  31                                   };
+  32                  //段选动态数码管
+  33                  unsigned char code HC138[] = {0xE3,0xE7,0xEB,0xEF,0xF3,0xF7,0xFB,0xFF};
+  34                          
+  35                          //{0xFF,0xFB,0xF7,0xF3,0xEF,0xEB,0xE7,0xE3};
+  36                  
+  37                  //位选动态数码管
+  38                  unsigned char LEDBUF[] = {8,8,8,8,8,8,8,8};
+  39                  //数据缓冲区 
+  40                  
+  41          void display()
+  42          {
+  43   1              
+  44   1              unsigned char i;
+  45   1              for(i=0;i<8;i++)
+  46   1              {
+  47   2              //首先进行段选
+  48   2              GPIO_DIG = leddata[LEDBUF[i]];
+  49   2              //然后进行位选
+  50   2              GPIO_PLACE = HC138[i];
+  51   2              //之后进行延时
+  52   2              Delayxms(1);
+  53   2              //通过i实现动态数码管
+  54   2              GPIO_DIG = 0x00;
+C51 COMPILER V9.60.0.0   DISPLAY                                                           01/17/2023 00:00:33 PAGE 2   
+
+  55   2              //实现消影
+  56   2              
+  57   2              }
+  58   1      
+  59   1      }
+  60                  
+  61                  
+  62                  
+  63                  
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     49    ----
+   CONSTANT SIZE    =     33    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      8       1
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

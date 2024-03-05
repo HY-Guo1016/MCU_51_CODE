@@ -1,0 +1,7 @@
+"..\Output\main.obj",
+"..\Output\I2C.obj",
+"..\Output\E2PROM.obj",
+"..\Output\display.obj",
+"..\Output\delay.obj" 
+TO "..\Output\°´Ò³Ð´" 
+PRINT("..\Listings\°´Ò³Ð´.m51") RAMSIZE(256) 

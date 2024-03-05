@@ -1,0 +1,5 @@
+"..\Output\main.obj",
+"..\Output\delay.obj",
+"..\Output\UART.obj" 
+TO "..\Output\接收一帧数据" 
+PRINT("..\Listings\接收一帧数据.m51") RAMSIZE(256) 

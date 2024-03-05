@@ -1,0 +1,4 @@
+"..\Output\main.obj",
+"..\Output\display.obj" 
+TO "..\Output\综合应用" 
+PRINT("..\Listings\综合应用.m51") RAMSIZE(256) 

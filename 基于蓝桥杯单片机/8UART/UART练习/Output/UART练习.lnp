@@ -1,0 +1,5 @@
+"..\Output\main.obj",
+"..\Output\time.obj",
+"..\Output\UART.obj" 
+TO "..\Output\UARTÁ·Ï°" 
+PRINT("..\Listings\UARTÁ·Ï°.m51") RAMSIZE(256) 
